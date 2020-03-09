@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import '@coreui/icons/css/coreui-icons.min.css';
+import 'font-awesome/css/font-awesome.min.css';
+import './scss/style.css';
+import { Switch, Route, withRouter } from 'react-router-dom';
+import logo from './logo.svg'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+import Form from '../src/form';
+import Login from './login/login';
+import DriverLogin from './driverlogin/driverlogin';
+import DriverInformation from './driverinformation/driverinformation';
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <div className="App-header" style={{ backgroundColor: "#f6f6f6" }} >
+          <img src={logo} style={{ height: "50px" }} />
+        </div>
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route exact path="/driverlogin" component={DriverLogin} />
+          <Route exact path="/driverinfo" component={DriverInformation} />
+          <Route exact path="/start-test" component={Form} />
+        </Switch>
+      </div>
+    );
+  }
 }
 
-export default App;
+export default withRouter(App);
