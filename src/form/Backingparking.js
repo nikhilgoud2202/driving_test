@@ -17,7 +17,7 @@ import FormInput from '../components/FormInput/FormInput';
 
 
 
-const PreTripInspection = (props) => {
+const Backingparking = (props) => {
 
     const { handleSubmit } = props;
     return (
@@ -27,13 +27,13 @@ const PreTripInspection = (props) => {
                     <CardBody>
                         <header class="panel-heading">
 
-                            <h4 class="panel-title">PRE-TRIP INSPECTION:</h4>
+                            <h4 class="panel-title">BACKING AND PARKING:</h4>
                         </header>
                         <FormGroup row>
                             <div className="form-group col-md-6">
 
                                 <div class="form-group col-md-12">
-                                    <label class="col-sm-12 control-label" for="w6-provide_age_proof">Checks general condition approaching unit looks for leads, oil, fuel, coolant etc:</label>
+                                    <label class="col-sm-12 control-label" for="w6-provide_age_proof">Gets out and looks before backing:</label>
 
                                     <select class="form-control" required>
                                         <option value="">Select Choice</option>
@@ -50,7 +50,7 @@ const PreTripInspection = (props) => {
                             <div className="form-group col-md-6">
 
                                 <div class="form-group col-md-12">
-                                    <label class="col-sm-12 control-label" for="w6-worked_before">Checks Under the hood – oil, coolant, general condition of Engine compartment:</label>
+                                    <label class="col-sm-12 control-label" for="w6-provide_age_proof">Rolls down window to listen for danger while backing:</label>
                                     <select class="form-control" required>
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
@@ -65,41 +65,7 @@ const PreTripInspection = (props) => {
                             <div className="form-group col-md-6">
 
                                 <div class="form-group col-md-12">
-                                    <label class="col-sm-12 control-label" for="w6-provide_age_proof">Checks around unit – tires, lights, trailer hook-up, Brake and light lines, body, doors :</label>
-
-                                    <select class="form-control" required>
-                                        <option value="">Select Choice</option>
-                                        <option value="Yes">Yes</option>
-                                        <option value="No">No</option>
-                                        <option value="N.A">N.A</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
-                                </div>
-                            </div>
-                            <div className="form-group col-md-6">
-
-                                <div class="form-group col-md-12">
-                                    <label class="col-sm-12 control-label" for="w6-worked_before">Checks brake action, tractor protection valve, and parking (hand) brake:</label>
-                                    <select class="form-control" required>
-                                        <option value="">Select Choice</option>
-                                        <option value="Yes">Yes</option>
-                                        <option value="No">No</option>
-                                        <option value="N.A">N.A</option>
-                                    </select>
-                                </div>
-
-
-                                <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
-                                </div>
-                            </div>
-                            <div className="form-group col-md-6">
-
-                                <div class="form-group col-md-12">
-                                    <label class="col-sm-12 control-label" for="w6-provide_age_proof">Checks horn, windshield wipers, mirrors, emergency Equipment, triangle reflectors, fire extinguisher:</label>
+                                    <label class="col-sm-12 control-label" for="w6-worked_before">Looks back as well as uses mirrors while backing:</label>
 
                                     <select class="form-control" required>
                                         <option value="">Select Choice</option>
@@ -116,7 +82,41 @@ const PreTripInspection = (props) => {
                             <div className="form-group col-md-6">
 
                                 <div class="form-group col-md-12">
-                                    <label class="col-sm-12 control-label" for="w6-worked_before">Checks instrument panel all gages for proper Functioning and demonstrates full understanding  :</label>
+                                    <label class="col-sm-12 control-label" for="w6-provide_age_proof">Avoids backing from blind side:</label>
+                                    <select class="form-control" required>
+                                        <option value="">Select Choice</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                        <option value="N.A">N.A</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="form-group col-md-12">
+                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                </div>
+                            </div>
+                            <div className="form-group col-md-6">
+
+                                <div class="form-group col-md-12">
+                                    <label class="col-sm-12 control-label" for="w6-worked_before">Signals when backing with horn and flashers:</label>
+
+                                    <select class="form-control" required>
+                                        <option value="">Select Choice</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                        <option value="N.A">N.A</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                </div>
+                            </div>
+                            <div className="form-group col-md-6">
+
+                                <div class="form-group col-md-12">
+                                    <label class="col-sm-12 control-label" for="w6-provide_age_proof">Controls speed and direction properly while backing :</label>
                                     <select class="form-control" required>
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
@@ -132,8 +132,7 @@ const PreTripInspection = (props) => {
                             <div className="form-group col-md-6">
 
                                 <div class="form-group col-md-12">
-                                    <label class="col-sm-12 control-label" for="w6-provide_age_proof">Cleans windshield, windows, mirrors, lights, reflectors:</label>
-
+                                    <label class="col-sm-12 control-label" for="w6-worked_before">Secures unit with both parking brakes before exiting cab:</label>
                                     <select class="form-control" required>
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
@@ -146,21 +145,7 @@ const PreTripInspection = (props) => {
                                     <input type="number" class="form-control" placeholder="Add Score" required />
                                 </div>
                             </div>
-                            <div className="form-group col-md-6">
 
-                                <div class="form-group col-md-12">
-                                    <label class="col-sm-12 control-label" for="w6-worked_before">Review all licenses permits and documents :</label>
-                                    <select class="form-control" required>
-                                        <option value="">Select Choice</option>
-                                        <option value="Yes">Yes</option>
-                                        <option value="No">No</option>
-                                        <option value="N.A">N.A</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
-                                </div>
-                            </div>
 
                             <div class="form-group col-md-12">
                                 <div class="form-group col-md-12">
@@ -168,7 +153,6 @@ const PreTripInspection = (props) => {
                                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 </div>
                             </div>
-
 
                         </FormGroup>
                     </CardBody>
@@ -183,7 +167,7 @@ const PreTripInspection = (props) => {
     );
 };
 
-PreTripInspection.propTypes = {
+Backingparking.propTypes = {
     handleSubmit: PropTypes.func
 };
 
@@ -192,4 +176,4 @@ export default reduxForm({
     destroyOnUnmount: false,
     forceUnregisterOnUnmount: true,
     validate
-})(PreTripInspection);
+})(Backingparking);

@@ -3,8 +3,12 @@ import PropTypes from 'prop-types';
 import Stepper from 'react-stepper-horizontal';
 import { Card } from 'reactstrap';
 import PreTripInspection from './PreTripInspection';
-import PersonalDetailsForm from './PersonalDetailsForm';
-import NomineeDetailsForm from './NomineeDetailsForm';
+import Coupling from './Couplinganduncoupling'
+import PLACING from './Placingmotion'
+import BACKING from './Backingparking'
+import SLOWING from './Slowingstopping'
+import PASSING from './Passingtrning'
+import MISCELLANEOUS from './Miscellaneous'
 
 class Form extends Component {
 
@@ -15,9 +19,14 @@ class Form extends Component {
     this.state = {
       page: 0,
       steps: [
-        {title: 'Pre-Trip Inspection'},
-        {title: 'Personal Details'},
-        {title: 'Nominee Details'}
+
+        { title: 'PRE-TRIP INSPECTION' },
+        { title: 'COUPLING AND UNCOUPLING' },
+        { title: 'PLACING VEHICLE IN MOTION AND USE OFCONTROLS' },
+        { title: 'BACKING AND PARKING' },
+        { title: 'SLOWING AND STOPPING' },
+        { title: 'OPERATING IN TRAFFIC: PASSING AND TURNING' },
+        { title: ' MISCELLANEOUS' }
       ]
     };
   }
@@ -30,22 +39,50 @@ class Form extends Component {
     this.setState({ page: this.state.page - 1 });
   }
 
+
   render() {
     const { onSubmit } = this.props;
     const { page, steps } = this.state;
 
     return (
       <Card>
-        <Stepper steps={ steps } activeStep={ page } />
+        <Stepper steps={steps} activeStep={page} />
         {page === 0 && <PreTripInspection onSubmit={this.nextPage} />}
         {page === 1 && (
-          <PersonalDetailsForm
+          <Coupling
             previousPage={this.previousPage}
             onSubmit={this.nextPage}
           />
         )}
         {page === 2 && (
-          <NomineeDetailsForm
+          <PLACING
+            previousPage={this.previousPage}
+            onSubmit={this.nextPage}
+          />
+        )}
+        {page === 3 && (
+          <BACKING
+            previousPage={this.previousPage}
+            onSubmit={this.nextPage}
+          />
+        )}
+        {page === 4 && (
+          <SLOWING
+            previousPage={this.previousPage}
+            onSubmit={this.nextPage}
+          />
+        )}
+        {page === 5 && (
+          <PASSING
+            previousPage={this.previousPage}
+            onSubmit={this.nextPage}
+          />
+        )}
+
+
+
+        {page === 6 && (
+          <MISCELLANEOUS
             previousPage={this.previousPage}
             onSubmit={onSubmit}
           />

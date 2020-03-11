@@ -1,88 +1,130 @@
 import React, { useState } from 'react';
-
+import { connect } from 'react-redux';
+import TimePicker from 'react-time-picker';
+import {
+    Button,
+    Card,
+    CardBody,
+    Col,
+    FormGroup
+} from 'reactstrap';
 function DriverInformation(props) {
+    let [time, setTime] = useState('')
+    let date = new Date()
     let DriverTest = (e) => {
-        props.history.push("/start-test");
+        props.history.push("/stepper");
     }
 
     return (
 
-        <div className="container p-5">
-            <header className="panel-heading">
+        <div className="Container ">
+            <Card className="card-border">
+                <CardBody>
+                    <header class="panel-heading">
 
-                <h4 className="panel-title">DriverInformation:</h4>
-            </header>
-            <form onSubmit={DriverTest}>
-                <div className="form-row">
-                    <div className="form-group col-md-6">
-                        <label for="inputEmail4">First name</label>
-                        <input type="email" className="form-control" id="inputEmail4" placeholder="First Name" required />
-                    </div>
-                    <div className="form-group col-md-6">
-                        <label for="inputPassword4">Last Name</label>
-                        <input type="text" className="form-control" id="inputPassword4" placeholder="Last Name" required />
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label for="inputAddress">License Number</label>
-                    <input type="text" className="form-control" id="inputAddress" placeholder="License Number" required />
-                </div>
-
-                <div className="form-row">
-                    <div className="form-group col-md-6">
-                        <label for="inputCity">Expiry Date</label>
-                        <input type="text" className="form-control" id="inputCity" placeholder="Expiry Date" required />
-                    </div>
-                    <div className="form-group col-md-6">
-                        <label for="inputState">Class Type</label>
-                        <select id="inputState" className="form-control">
-                            <option selected>Choose...</option>
-                            <option>...</option>
-                        </select>
-                    </div>
-
-                </div>
-                <header className="panel-heading">
-
-                    <h4 className="panel-title">CompanyInformation:</h4>
-                </header>
+                        <h4 class="panel-title">Driver Information:</h4>
+                    </header>
+                    <form onSubmit={DriverTest}>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">First name</label>
+                                <input type="text" class="form-control" placeholder="First Name" required />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">Last Name</label>
+                                <input type="text" class="form-control" placeholder="Last Name" required />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputAddress">License Number</label>
+                                <input type="text" class="form-control" placeholder="License Number" required />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Email</label>
+                                <input type="email" class="form-control" placeholder="Enter Your Email" required />
+                            </div>
+                        </div>
 
 
-                <div className="form-group">
-                    <label for="inputAddress">Company Name</label>
-                    <input type="text" className="form-control" id="input" placeholder="Company Name" required />
-                </div>
-                <div className="form-group">
-                    <label for="inputAddress2">Address</label>
-                    <input type="text" className="form-control" id="inputAddress2" placeholder="Address" required />
-                </div>
-                <div className="form-row">
-                    <div className="form-group col-md-4">
-                        <label for="inputCity">Tractor</label>
-                        <input type="text" className="form-control" id="inputCity" placeholder="Tractor" required />
-                    </div>
-                    <div className="form-group col-md-4">
-                        <label for="inputState">Triler</label>
-                        <input type="text" className="form-control" id="inputCity" placeholder="Triler" required />
-                    </div>
-                    <div className="form-group col-md-4">
-                        <label for="inputZip">Straight Truck</label>
-                        <input type="text" className="form-control" id="inputZip" placeholder="Straight Truck" required />
-                    </div>
-                </div>
-                <div className="form-row">
-                    <div className="form-group col-md-4">
-                        <label for="inputCity">Start Time</label>
-                        <input type="text" className="form-control" id="inputCity" placeholder="Start Time" required />
-                    </div>
-                </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputCity">Expiry Date</label>
+                                <input type="date" min={date} class="form-control" placeholder="Expiry Date" required />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputState">Class Type</label>
+                                <select class="form-control">
+                                    <option selected>Select Class</option>
+                                    <option value="C-Class">C-Class</option>
+                                    <option value="AZ">AZ</option>
+                                    <option value="DZ">DZ</option>
+                                </select>
+                            </div>
 
-                <div className="form-group row">
-                    <div className="col-sm-10">
-                        <button type="submit" className="btn btn-primary">Submit</button>
-                    </div>
-                </div>
-            </form>
+                        </div>
+
+                        <header class="panel-heading">
+
+                            <h4 class="panel-title">CompanyInformation:</h4>
+                        </header>
+
+
+                        <div class="form-group">
+                            <label for="inputAddress">Company Name</label>
+                            <input type="text" class="form-control" placeholder="Company Name" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress2">Address</label>
+                            <input type="text" class="form-control" placeholder="Address" required />
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="inputCity">Tractor</label>
+                                <input type="text" class="form-control" placeholder="Tractor" required />
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputState">Triler</label>
+                                <input type="text" class="form-control" placeholder="Triler" required />
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputZip">Straight Truck</label>
+                                <input type="text" class="form-control" placeholder="Straight Truck" required />
+                            </div>
+                        </div>
+                        <header class="panel-heading">
+
+                            <h4 class="panel-title">Start Test Information:</h4>
+                        </header>
+
+
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputZip"> Test Starting Time</label>
+                                <input type="time" class="form-control" placeholder="Test Start Time" required />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputZip">Start Odometer</label>
+                                <input type="text" class="form-control" placeholder="Start Odometer Reading" required />
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="inputZip">Start Location</label>
+                                <input type="text" class="form-control" placeholder="Start Location" required />
+                            </div>
+                            <div class="form-group col-md-12">
+
+                                <button type="submit" class="btn btn-primary  pull-right">Start Test</button>
+
+
+                            </div>
+                        </div>
+
+
+
+                    </form>
+                </CardBody>
+            </Card>
         </div>
     )
 }

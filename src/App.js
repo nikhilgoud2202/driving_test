@@ -3,7 +3,7 @@ import '@coreui/icons/css/coreui-icons.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import './scss/style.css';
 import { Switch, Route, withRouter } from 'react-router-dom';
-import logo from './logo.svg'
+import logo from './logo.png'
 
 
 
@@ -11,6 +11,8 @@ import Form from '../src/form';
 import Login from './login/login';
 import DriverLogin from './driverlogin/driverlogin';
 import DriverInformation from './driverinformation/driverinformation';
+import Endtest from './EndTest/Endtest';
+
 
 class App extends Component {
   render() {
@@ -24,6 +26,7 @@ class App extends Component {
           <Route exact path="/driverlogin" component={DriverLogin} />
           <Route exact path="/driverinfo" component={DriverInformation} />
           <Route exact path="/start-test" component={Form} />
+          <Route exact path="/end-test" component={Endtest} />
         </Switch>
       </div>
     );
