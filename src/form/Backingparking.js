@@ -19,7 +19,7 @@ import FormInput from '../components/FormInput/FormInput';
 
 const Backingparking = (props) => {
 
-    const { handleSubmit } = props;
+    const { handleSubmit, pristine, previousPage, submitting } = props;
     return (
         <form onSubmit={handleSubmit}>
             <Col sm="12">
@@ -35,7 +35,7 @@ const Backingparking = (props) => {
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-provide_age_proof">Gets out and looks before backing:</label>
 
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -44,14 +44,14 @@ const Backingparking = (props) => {
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
 
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-provide_age_proof">Rolls down window to listen for danger while backing:</label>
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -59,7 +59,7 @@ const Backingparking = (props) => {
                                     </select>
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
@@ -67,7 +67,7 @@ const Backingparking = (props) => {
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-worked_before">Looks back as well as uses mirrors while backing:</label>
 
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -76,14 +76,14 @@ const Backingparking = (props) => {
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
 
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-provide_age_proof">Avoids backing from blind side:</label>
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -93,7 +93,7 @@ const Backingparking = (props) => {
 
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
@@ -101,7 +101,7 @@ const Backingparking = (props) => {
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-worked_before">Signals when backing with horn and flashers:</label>
 
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -110,14 +110,14 @@ const Backingparking = (props) => {
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
 
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-provide_age_proof">Controls speed and direction properly while backing :</label>
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -125,7 +125,7 @@ const Backingparking = (props) => {
                                     </select>
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
 
@@ -133,7 +133,7 @@ const Backingparking = (props) => {
 
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-worked_before">Secures unit with both parking brakes before exiting cab:</label>
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -142,7 +142,7 @@ const Backingparking = (props) => {
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
 
@@ -157,6 +157,10 @@ const Backingparking = (props) => {
                         </FormGroup>
                     </CardBody>
                     <div style={{ paddingBottom: 30 }}>
+                        <Button color="primary" className="btn-pill pull-left" onClick={previousPage} style={{ marginLeft: '20px' }}>
+                            <i className="fa fa-chevron-left" />
+                &nbsp; Previous
+            </Button>
                         <Button color="primary" className="btn-pill pull-right" type="submit" style={{ marginRight: '20px' }}>
                             Next &nbsp; <i className="fa fa-chevron-right" />
                         </Button>
@@ -168,7 +172,8 @@ const Backingparking = (props) => {
 };
 
 Backingparking.propTypes = {
-    handleSubmit: PropTypes.func
+    handleSubmit: PropTypes.func,
+    previousPage: PropTypes.func
 };
 
 export default reduxForm({

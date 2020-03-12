@@ -19,7 +19,7 @@ import FormInput from '../components/FormInput/FormInput';
 
 const Placingmotion = (props) => {
 
-    const { handleSubmit } = props;
+    const { handleSubmit, pristine, previousPage, submitting } = props;
     return (
         <form onSubmit={handleSubmit}>
             <Col sm="12">
@@ -39,7 +39,7 @@ const Placingmotion = (props) => {
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-provide_age_proof">Puts transmission in neutral, starts the engine with the clutch fully depressed:</label>
 
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -48,14 +48,14 @@ const Placingmotion = (props) => {
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
 
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-worked_before">Allows proper warm-up and scans gauges:</label>
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -63,7 +63,7 @@ const Placingmotion = (props) => {
                                     </select>
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
@@ -71,7 +71,7 @@ const Placingmotion = (props) => {
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-provide_age_proof">Maintains proper engine speed (rpm) while driving:</label>
 
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -80,14 +80,14 @@ const Placingmotion = (props) => {
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
 
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-worked_before">Does not abuse engine by over-revving or lugging(running rmp too low):</label>
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -97,7 +97,7 @@ const Placingmotion = (props) => {
 
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
 
@@ -118,7 +118,7 @@ const Placingmotion = (props) => {
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-provide_age_proof">Start loaded unit smoothly:</label>
 
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -127,14 +127,14 @@ const Placingmotion = (props) => {
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
 
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-worked_before">Uses clutch and times shifting properly:</label>
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -142,7 +142,7 @@ const Placingmotion = (props) => {
                                     </select>
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
@@ -150,7 +150,7 @@ const Placingmotion = (props) => {
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-provide_age_proof">Shifts gears smoothly and uses proper gear sequence:</label>
 
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -159,14 +159,14 @@ const Placingmotion = (props) => {
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
 
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-worked_before">Downshifts when approaching traffic lights:</label>
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -176,7 +176,7 @@ const Placingmotion = (props) => {
 
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
 
@@ -197,7 +197,7 @@ const Placingmotion = (props) => {
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-provide_age_proof">Knows proper use of protection valve:</label>
 
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -206,14 +206,14 @@ const Placingmotion = (props) => {
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
 
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-worked_before">Understands and tests low air warning device:</label>
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -221,7 +221,7 @@ const Placingmotion = (props) => {
                                     </select>
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
@@ -229,7 +229,7 @@ const Placingmotion = (props) => {
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-provide_age_proof">Tests Tractor, trailer and service brakes:</label>
 
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -238,14 +238,14 @@ const Placingmotion = (props) => {
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
 
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-worked_before">Builds full air pressure before moving:</label>
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -255,7 +255,7 @@ const Placingmotion = (props) => {
 
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
 
@@ -276,7 +276,7 @@ const Placingmotion = (props) => {
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-provide_age_proof">Keeps both hand on wheel when not shifting:</label>
 
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -285,14 +285,14 @@ const Placingmotion = (props) => {
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
 
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-worked_before">Controls steering well, does not wonder in lane:</label>
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -300,7 +300,7 @@ const Placingmotion = (props) => {
                                     </select>
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
@@ -308,7 +308,7 @@ const Placingmotion = (props) => {
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-provide_age_proof">Good driving posture good grip on steering wheel:</label>
 
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -317,7 +317,7 @@ const Placingmotion = (props) => {
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
 
@@ -331,6 +331,10 @@ const Placingmotion = (props) => {
                         </FormGroup>
                     </CardBody>
                     <div style={{ paddingBottom: 30 }}>
+                        <Button color="primary" className="btn-pill pull-left" onClick={previousPage} style={{ marginLeft: '20px' }}>
+                            <i className="fa fa-chevron-left" />
+                &nbsp; Previous
+            </Button>
                         <Button color="primary" className="btn-pill pull-right" type="submit" style={{ marginRight: '20px' }}>
                             Next &nbsp; <i className="fa fa-chevron-right" />
                         </Button>
@@ -342,7 +346,9 @@ const Placingmotion = (props) => {
 };
 
 Placingmotion.propTypes = {
-    handleSubmit: PropTypes.func
+
+    handleSubmit: PropTypes.func,
+    previousPage: PropTypes.func
 };
 
 export default reduxForm({

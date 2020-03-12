@@ -19,7 +19,7 @@ import FormInput from '../components/FormInput/FormInput';
 
 const Slowingstopping = (props) => {
 
-    const { handleSubmit } = props;
+    const { handleSubmit, pristine, previousPage, submitting } = props;
     return (
         <form onSubmit={handleSubmit}>
             <Col sm="12">
@@ -35,7 +35,7 @@ const Slowingstopping = (props) => {
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-provide_age_proof">Gears down properly approaching a stop:</label>
 
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -44,14 +44,14 @@ const Slowingstopping = (props) => {
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
 
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-provide_age_proof">Starts on a grade without rolling back:</label>
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -59,7 +59,7 @@ const Slowingstopping = (props) => {
                                     </select>
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
@@ -67,7 +67,7 @@ const Slowingstopping = (props) => {
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-worked_before">Uses mirrors to check traffic behind unit:</label>
 
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -76,14 +76,14 @@ const Slowingstopping = (props) => {
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
 
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-provide_age_proof">Avoids sudden stops:</label>
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -93,7 +93,7 @@ const Slowingstopping = (props) => {
 
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
@@ -101,7 +101,7 @@ const Slowingstopping = (props) => {
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-worked_before">Stops smoothly without excessive fanning:</label>
 
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -110,14 +110,14 @@ const Slowingstopping = (props) => {
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
 
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-provide_age_proof">Stops well behind stop line:</label>
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -125,7 +125,7 @@ const Slowingstopping = (props) => {
                                     </select>
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
 
@@ -133,7 +133,7 @@ const Slowingstopping = (props) => {
 
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-worked_before">Does not encroach on pedestrian’s crosswalk:</label>
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -142,7 +142,7 @@ const Slowingstopping = (props) => {
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
 
@@ -156,6 +156,10 @@ const Slowingstopping = (props) => {
                         </FormGroup>
                     </CardBody>
                     <div style={{ paddingBottom: 30 }}>
+                        <Button color="primary" className="btn-pill pull-left" onClick={previousPage} style={{ marginLeft: '20px' }}>
+                            <i className="fa fa-chevron-left" />
+                &nbsp; Previous
+            </Button>
                         <Button color="primary" className="btn-pill pull-right" type="submit" style={{ marginRight: '20px' }}>
                             Next &nbsp; <i className="fa fa-chevron-right" />
                         </Button>
@@ -167,7 +171,8 @@ const Slowingstopping = (props) => {
 };
 
 Slowingstopping.propTypes = {
-    handleSubmit: PropTypes.func
+    handleSubmit: PropTypes.func,
+    previousPage: PropTypes.func
 };
 
 export default reduxForm({

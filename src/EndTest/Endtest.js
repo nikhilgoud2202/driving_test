@@ -55,25 +55,31 @@ function Endtest(props) {
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="exampleFormControlTextarea1">Comment Section:</label>
+                                <label for="exampleFormControlTextarea1">Examiner Comment Section:</label>
                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="exampleFormControlTextarea1">Driver Signature:</label>
-                                <SignatureCanvas penColor='green'
-                                    ref={(ref) => { setSign1(ref) }} canvasProps={{ width: 300, height: 100, className: 'sigCanvas' }} />
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="exampleFormControlTextarea1">Examiner Signature:</label>
                                 <SignatureCanvas penColor='green'
-                                    ref={(ref) => { setSign2(ref) }} canvasProps={{ width: 300, height: 100, className: 'sigCanvas' }} />
+                                    ref={(ref) => { setSign1(ref) }} canvasProps={{ width: 300, height: 100, className: 'sigCanvas' }} />
                             </div>
                             <div class="form-group col-md-6">
                                 <a class="btn btn-primary  pull-right" onClick={Signone}>Clear Signature</a>
 
                             </div>
+                            <div class="form-group col-md-12">
+                                <label for="exampleFormControlTextarea1">Driver Comment Section:</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
                             <div class="form-group col-md-6">
-                                <a class="btn btn-primary  pull-right" onClick={Signtwo} >Clear Signature</a>
+                                <label for="exampleFormControlTextarea1">Driver Signature:</label>
+                                <SignatureCanvas penColor='green'
+                                    ref={(ref) => { setSign2(ref) }} canvasProps={{ width: 300, height: 100, className: 'sigCanvas' }} />
+                            </div>
+
+                            <div class="form-group col-md-6">
+
+                                <a class="btn btn-primary  pull-center" onClick={Signtwo} >Clear Signature</a>
                             </div>
 
 

@@ -19,7 +19,7 @@ import FormInput from '../components/FormInput/FormInput';
 
 const Miscellaneous = (props) => {
 
-    const { handleSubmit } = props;
+    const { handleSubmit, pristine, previousPage, submitting } = props;
     return (
         <form onSubmit={handleSubmit}>
             <Col sm="12">
@@ -39,7 +39,7 @@ const Miscellaneous = (props) => {
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-provide_age_proof">Consistently alert and attentive:</label>
 
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -48,14 +48,14 @@ const Miscellaneous = (props) => {
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
 
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-provide_age_proof">Checks mirrors every 5-8 seconds:</label>
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -63,7 +63,7 @@ const Miscellaneous = (props) => {
                                     </select>
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
@@ -71,7 +71,7 @@ const Miscellaneous = (props) => {
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-provide_age_proof">Adjusts driving to meetchanging conditions:</label>
 
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -80,7 +80,7 @@ const Miscellaneous = (props) => {
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
 
@@ -89,7 +89,7 @@ const Miscellaneous = (props) => {
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-worked_before">Performs routine functions without taking his eyes off the road:</label>
 
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -98,14 +98,14 @@ const Miscellaneous = (props) => {
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
 
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-provide_age_proof">Checks instruments regularly while driving:</label>
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -115,7 +115,7 @@ const Miscellaneous = (props) => {
 
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
@@ -123,7 +123,7 @@ const Miscellaneous = (props) => {
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-worked_before">Willing to take instructions and suggestions:</label>
 
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -132,14 +132,14 @@ const Miscellaneous = (props) => {
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
 
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-provide_age_proof">Adequate self-confidence in driving:</label>
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -149,7 +149,7 @@ const Miscellaneous = (props) => {
 
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
@@ -157,7 +157,7 @@ const Miscellaneous = (props) => {
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-worked_before">Is not easily angered:</label>
 
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -166,7 +166,7 @@ const Miscellaneous = (props) => {
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
                             <div className="form-group col-md-6">
@@ -174,7 +174,7 @@ const Miscellaneous = (props) => {
                                 <div class="form-group col-md-12">
                                     <label class="col-sm-12 control-label" for="w6-worked_before">Has a positive attitude and good demeanor:</label>
 
-                                    <select class="form-control" required>
+                                    <select class="form-control" >
                                         <option value="">Select Choice</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -183,7 +183,7 @@ const Miscellaneous = (props) => {
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <input type="number" class="form-control" placeholder="Add Score" required />
+                                    <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
 
@@ -197,6 +197,10 @@ const Miscellaneous = (props) => {
                         </FormGroup>
                     </CardBody>
                     <div style={{ paddingBottom: 30 }}>
+                        <Button color="primary" className="btn-pill pull-left" onClick={previousPage} style={{ marginLeft: '20px' }}>
+                            <i className="fa fa-chevron-left" />
+                &nbsp; Previous
+            </Button>
                         <Button color="primary" className="btn-pill pull-right" type="submit" style={{ marginRight: '20px' }}>
                             Next &nbsp; <i className="fa fa-chevron-right" />
                         </Button>
@@ -208,7 +212,10 @@ const Miscellaneous = (props) => {
 };
 
 Miscellaneous.propTypes = {
-    handleSubmit: PropTypes.func
+    handleSubmit: PropTypes.func,
+    pristine: PropTypes.bool,
+    previousPage: PropTypes.func,
+    submitting: PropTypes.bool
 };
 
 export default reduxForm({
