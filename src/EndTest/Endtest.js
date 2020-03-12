@@ -26,15 +26,15 @@ function Endtest(props) {
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputZip">End Odometer</label>
-                                <input type="text" class="form-control" placeholder=" End Odometer Reading" required />
+                                <input type="number" class="form-control" placeholder=" End Odometer Reading" required />
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputZip"> Total Odometer Points</label>
-                                <input type="time" class="form-control" placeholder=" Total Odometer Points" required />
+                                <input type="number" class="form-control" placeholder=" Total Odometer Points" required />
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputZip">Total Points</label>
-                                <input type="text" class="form-control" placeholder=" Total Points" required />
+                                <input type="number" class="form-control" placeholder=" Total Points" required />
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputZip">Qualified</label>
