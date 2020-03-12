@@ -106,7 +106,7 @@ function DriverInformation(props) {
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputZip">Start Odometer</label>
-                                <input type="text" class="form-control" placeholder="Start Odometer Reading" required />
+                                <input type="number" class="form-control" placeholder="Start Odometer Reading" required />
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="inputZip">Start Location</label>
