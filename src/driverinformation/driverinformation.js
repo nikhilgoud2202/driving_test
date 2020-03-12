@@ -12,7 +12,7 @@ function DriverInformation(props) {
     let [time, setTime] = useState('')
     let date = new Date()
     let DriverTest = (e) => {
-        props.history.push("/stepper");
+        props.history.push("/start-test");
     }
 
     return (

@@ -9,6 +9,14 @@ import {
 } from 'reactstrap';
 import './endstyle.css';
 function Endtest(props) {
+    let [sign1, setSign1] = useState('')
+    let [sign2, setSign2] = useState('')
+    let Signone = () => {
+        sign1.clear()
+    }
+    let Signtwo = () => {
+        sign2.clear()
+    }
     return (
         <div className="Container ">
             <Card className="card-border">
@@ -29,8 +37,8 @@ function Endtest(props) {
                                 <input type="number" class="form-control" placeholder=" End Odometer Reading" required />
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="inputZip"> Total Odometer Points</label>
-                                <input type="number" class="form-control" placeholder=" Total Odometer Points" required />
+                                <label for="inputZip">Total Kilometers Driven</label>
+                                <input type="number" class="form-control" placeholder="Total Kilometers Driven" required />
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputZip">Total Points</label>
@@ -53,18 +61,24 @@ function Endtest(props) {
                             <div class="form-group col-md-6">
                                 <label for="exampleFormControlTextarea1">Driver Signature:</label>
                                 <SignatureCanvas penColor='green'
-                                    canvasProps={{ width: 300, height: 100, className: 'sigCanvas' }} />
+                                    ref={(ref) => { setSign2(ref) }} canvasProps={{ width: 300, height: 100, className: 'sigCanvas' }} />
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="exampleFormControlTextarea1">Examiner Signature:</label>
                                 <SignatureCanvas penColor='green'
-                                    canvasProps={{ width: 300, height: 100, className: 'sigCanvas' }} />
+                                    ref={(ref) => { setSign1(ref) }} canvasProps={{ width: 300, height: 100, className: 'sigCanvas' }} />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <a class="btn btn-primary  pull-center" onClick={Signone}>Clear Signature</a>
+
+                            </div>
+                            <div class="form-group col-md-6">
+                                <a class="btn btn-primary  pull-center" onClick={Signtwo} >Clear Signature</a>
                             </div>
 
+
                             <div class="form-group col-md-12">
-
-                                <button type="submit" class="btn btn-primary  pull-right">End Test</button>
-
+                                <button type="submit" class="btn btn-primary  pull-right" >End Test</button>
 
                             </div>
                         </div>
