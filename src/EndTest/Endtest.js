@@ -7,6 +7,7 @@ import {
     Col,
     FormGroup
 } from 'reactstrap';
+import './endstyle.css';
 function Endtest(props) {
     return (
         <div className="Container ">
@@ -50,14 +51,14 @@ function Endtest(props) {
                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="exampleFormControlTextarea1">Comment Section:</label>
+                                <label for="exampleFormControlTextarea1">Driver Signature:</label>
                                 <SignatureCanvas penColor='green'
                                     canvasProps={{ width: 300, height: 100, className: 'sigCanvas' }} />
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="exampleFormControlTextarea1">Comment Section:</label>
+                                <label for="exampleFormControlTextarea1">Examiner Signature:</label>
                                 <SignatureCanvas penColor='green'
-                                    canvasProps={{ width: 300, height: 100, border: 1, className: 'sigCanvas' }} />
+                                    canvasProps={{ width: 300, height: 100, className: 'sigCanvas' }} />
                             </div>
 
                             <div class="form-group col-md-12">

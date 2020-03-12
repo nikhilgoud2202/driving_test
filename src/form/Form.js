@@ -9,6 +9,7 @@ import BACKING from './Backingparking'
 import SLOWING from './Slowingstopping'
 import PASSING from './Passingtrning'
 import MISCELLANEOUS from './Miscellaneous'
+import './formstyle.css'
 
 class Form extends Component {
 
@@ -29,6 +30,7 @@ class Form extends Component {
         { title: ' MISCELLANEOUS' }
       ]
     };
+
   }
 
   nextPage() {
@@ -41,18 +43,28 @@ class Form extends Component {
 
 
   render() {
+    let SubmitHandler = (e) => {
+      // props.history.push("/end-test");
+    }
     const { onSubmit } = this.props;
     const { page, steps } = this.state;
 
     return (
       <Card>
-        <Stepper steps={steps} activeStep={page} />
+
+        <div class="form-row">
+          <div class="form-group col-md-sm-12">
+            <Stepper class="form-control" steps={steps} activeStep={page} /></div></div>
         {page === 0 && <PreTripInspection onSubmit={this.nextPage} />}
         {page === 1 && (
           <Coupling
             previousPage={this.previousPage}
             onSubmit={this.nextPage}
           />
+          // <MISCELLANEOUS
+          //   previousPage={this.previousPage}
+          //   onSubmit={this.nextPage}
+          // />
         )}
         {page === 2 && (
           <PLACING
@@ -84,7 +96,8 @@ class Form extends Component {
         {page === 6 && (
           <MISCELLANEOUS
             previousPage={this.previousPage}
-            onSubmit={onSubmit}
+            onSubmit={SubmitHandler}
+            onClick="./end-test"
           />
         )}
       </Card>
