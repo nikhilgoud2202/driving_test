@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import TimePicker from 'react-time-picker';
+import axios from 'axios';
+
 import {
     Button,
     Card,
@@ -10,9 +12,64 @@ import {
 } from 'reactstrap';
 function DriverInformation(props) {
     let [time, setTime] = useState('')
+    let [firstName, setFirstName] = useState('')
+    let [lastName, setLastName] = useState('')
+    let [licenseNumber, setLicenseNumber] = useState('')
+    let [email, setEmail] = useState('')
+    let [expiryDate, setExpiryDate] = useState('')
+    let [classType, setClassType] = useState('')
+    let [companyName, setCompanyName] = useState('')
+    let [address, setAddress] = useState('')
+    let [tractor, setTractor] = useState('')
+    let [triler, setTriler] = useState('')
+    let [straightTruck, setStraightTruck] = useState('')
+    let [testStartingTime, setTestStartingTime] = useState('')
+    let [startOdometer, setStartOdometer] = useState('')
+    let [StartLocation, setStartLocation] = useState('')
+
     let date = new Date()
+    useEffect(() => {
+
+
+        if (!localStorage.userID) {
+            props.history.push("/");
+        }
+        else if (!localStorage.lic_ID) {
+            props.history.push("/driverlogin");
+        }
+        else if (localStorage.start_time) {
+            props.history.push("/start-test");
+        }
+    })
     let DriverTest = (e) => {
-        props.history.push("/start-test");
+        e.preventDefault();
+        let data = {
+            "firstName": firstName,
+            "lastName": lastName,
+            "licenseNumber": licenseNumber,
+            "expiryDate": expiryDate,
+            "classType": classType,
+            "email": email,
+            " companyName": companyName,
+            "address": address,
+            "tractor": address,
+            "triler": triler,
+            "straightTruck": straightTruck
+
+        }
+        console.log(data)
+
+        axios.post("https://drivingtest.herokuapp.com/adddriverdetails",
+            data
+        )
+            .then(
+                resp => {
+
+                    console.log(resp)
+                    localStorage.setItem("start_time", testStartingTime);
+                    props.history.push("/start-test");
+                })
+
     }
 
     return (
@@ -28,21 +85,21 @@ function DriverInformation(props) {
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputEmail4">First name</label>
-                                <input type="text" class="form-control" placeholder="First Name" required />
+                                <input type="text" class="form-control" value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder="First Name" required />
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPassword4">Last Name</label>
-                                <input type="text" class="form-control" placeholder="Last Name" required />
+                                <input type="text" class="form-control" value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder="Last Name" required />
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputAddress">License Number</label>
-                                <input type="text" class="form-control" placeholder="License Number" required />
+                                <input type="text" class="form-control" value={licenseNumber} onChange={(e) => setLicenseNumber(e.target.value)} placeholder="License Number" required />
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputEmail4">Email</label>
-                                <input type="email" class="form-control" placeholder="Enter Your Email" required />
+                                <input type="email" class="form-control" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter Your Email" required />
                             </div>
                         </div>
 
@@ -50,11 +107,11 @@ function DriverInformation(props) {
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputCity">Expiry Date</label>
-                                <input type="date" min={date} class="form-control" placeholder="Expiry Date" required />
+                                <input type="date" min={date} value={expiryDate} onChange={(e) => setExpiryDate(e.target.value)} class="form-control" placeholder="Expiry Date" required />
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputState">Class Type</label>
-                                <select class="form-control">
+                                <select value={classType} onChange={(e) => setClassType(e.target.value)} class="form-control">
                                     <option selected>Select Class</option>
                                     <option value="C-Class">C-Class</option>
                                     <option value="AZ">AZ</option>
@@ -71,25 +128,25 @@ function DriverInformation(props) {
 
 
                         <div class="form-group">
-                            <label for="inputAddress">Company Name</label>
-                            <input type="text" class="form-control" placeholder="Company Name" required />
+                            <label for="inputAddress" >Company Name</label>
+                            <input type="text" class="form-control" value={companyName} onChange={(e) => setCompanyName(e.target.value)} placeholder="Company Name" required />
                         </div>
                         <div class="form-group">
-                            <label for="inputAddress2">Address</label>
-                            <input type="text" class="form-control" placeholder="Address" required />
+                            <label for="inputAddress2" >Address</label>
+                            <input type="text" class="form-control" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Address" required />
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="inputCity">Tractor</label>
-                                <input type="text" class="form-control" placeholder="Tractor" required />
+                                <label for="inputCity" >Tractor</label>
+                                <input type="text" class="form-control" value={tractor} onChange={(e) => setTractor(e.target.value)} placeholder="Tractor" required />
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputState">Triler</label>
-                                <input type="text" class="form-control" placeholder="Triler" required />
+                                <input type="text" class="form-control" value={triler} onChange={(e) => setTriler(e.target.value)} placeholder="Triler" required />
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputZip">Straight Truck</label>
-                                <input type="text" class="form-control" placeholder="Straight Truck" required />
+                                <input type="text" class="form-control" value={straightTruck} onChange={(e) => setStraightTruck(e.target.value)} placeholder="Straight Truck" required />
                             </div>
                         </div>
                         <header class="panel-heading">
@@ -101,16 +158,16 @@ function DriverInformation(props) {
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="inputZip"> Test Starting Time</label>
-                                <input type="time" class="form-control" placeholder="Test Start Time" required />
+                                <label for="inputZip"  > Test Starting Time</label>
+                                <input type="time" class="form-control" onChange={(e) => setTestStartingTime(e.target.value)} placeholder="Test Start Time" required />
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputZip">Start Odometer</label>
-                                <input type="number" class="form-control" placeholder="Start Odometer Reading" required />
+                                <input type="number" class="form-control" onChange={(e) => setStartOdometer(e.target.value)} placeholder="Start Odometer Reading" required />
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="inputZip">Start Location</label>
-                                <input type="text" class="form-control" placeholder="Start Location" required />
+                                <input type="text" class="form-control" onChange={(e) => setStartLocation(e.target.value)} placeholder="Start Location" required />
                             </div>
                             <div class="form-group col-md-12">
 
