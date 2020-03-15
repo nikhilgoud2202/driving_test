@@ -27,7 +27,7 @@ const Slowingstopping = (props) => {
                     <CardBody>
                         <header class="panel-heading">
 
-                            <h4 class="panel-title">SLOWING SND STOPPING:</h4>
+                            <h4 class="panel-title">SLOWING AND STOPPING:</h4>
                         </header>
                         <FormGroup row>
                             <div className="form-group col-md-6">
@@ -145,7 +145,12 @@ const Slowingstopping = (props) => {
                                     <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
-
+                            <div className="form-group col-md-6">
+                                <label class="col-sm-12 control-label" for="w6-worked_before">Slowing And Stopping Total Score:</label>
+                                <div class="form-group col-md-12">
+                                    <input type="number" class="form-control" placeholder="Total Score" />
+                                </div>
+                            </div>
 
                             <div class="form-group col-md-12">
                                 <div class="form-group col-md-12">

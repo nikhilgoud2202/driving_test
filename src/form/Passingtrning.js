@@ -571,6 +571,12 @@ const Passingturning = (props) => {
                                     <input type="number" class="form-control" placeholder="Add Score" />
                                 </div>
                             </div>
+                            <div className="form-group col-md-6">
+                                <label class="col-sm-12 control-label" for="w6-worked_before">Passing and Turning Total Score:</label>
+                                <div class="form-group col-md-12">
+                                    <input type="number" class="form-control" placeholder="Total Score" />
+                                </div>
+                            </div>
 
                             <div class="form-group col-md-12">
                                 <div class="form-group col-md-12">

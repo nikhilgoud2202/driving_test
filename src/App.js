@@ -12,7 +12,8 @@ import Login from './login/login';
 import DriverLogin from './driverlogin/driverlogin';
 import DriverInformation from './driverinformation/driverinformation';
 import Endtest from './EndTest/Endtest';
-import PDF from './Pdf';
+import Pdf from './Pdf';
+
 
 
 class App extends Component {
@@ -26,7 +27,8 @@ class App extends Component {
         </div>
         <Switch>
           <Route exact path="/" component={Login} />
-          <Route exact path="/pdf" component={PDF} />
+          <Route exact path="/pdf" component={Pdf} />
+
           <Route exact path="/driverlogin" component={DriverLogin} />
           <Route exact path="/driverinfo" component={DriverInformation} />
           <Route exact path="/start-test" component={Form} />

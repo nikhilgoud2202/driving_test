@@ -21,7 +21,10 @@ function DriverInformation(props) {
     let [companyName, setCompanyName] = useState('')
     let [address, setAddress] = useState('')
     let [tractor, setTractor] = useState('')
+    let [tractorPlate, setTractorPlate] = useState('')
     let [triler, setTriler] = useState('')
+    let [trilerPlate, setTrilerPlate] = useState('')
+
     let [straightTruck, setStraightTruck] = useState('')
     let [testStartingTime, setTestStartingTime] = useState('')
     let [startOdometer, setStartOdometer] = useState('')
@@ -40,7 +43,38 @@ function DriverInformation(props) {
         else if (localStorage.start_time) {
             props.history.push("/start-test");
         }
-    })
+
+        axios.post("https://drivingtest.herokuapp.com/getDriverDetails", {
+            licenseNumber
+        })
+            .then(
+                resp => {
+                    console.log(resp.data)
+                    if (resp.data) {
+                        alert("data")
+                        setFirstName(resp.data.firstName)
+                        setLastName(resp.data.lastName)
+                        setLicenseNumber(licenseNumber)
+                        setExpiryDate(new Date(resp.data.expiryDate))
+                        setClassType(resp.data.classType)
+                        setEmail(resp.data.email)
+                        setCompanyName(resp.data.companyName)
+                        setAddress(resp.data.address)
+                        setTractor(resp.data.tractor)
+                        setTractorPlate(resp.data.tractorPlate)
+                        setTriler(resp.data.triler)
+                        setTrilerPlate(resp.data.trilerPlate)
+                        setStraightTruck(resp.data.straightTruck)
+                    } else {
+                        alert("no")
+                        setLicenseNumber(localStorage.getItem("lic_ID"))
+                        setFirstName(localStorage.getItem("firstname"))
+                        setLastName(localStorage.getItem("lastname"))
+                    }
+
+                })
+
+    }, [])
     let DriverTest = (e) => {
         e.preventDefault();
         let data = {
@@ -50,7 +84,7 @@ function DriverInformation(props) {
             "expiryDate": expiryDate,
             "classType": classType,
             "email": email,
-            " companyName": companyName,
+            "companyName": companyName,
             "address": address,
             "tractor": address,
             "triler": triler,
@@ -95,7 +129,7 @@ function DriverInformation(props) {
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputAddress">License Number</label>
-                                <input type="text" class="form-control" value={licenseNumber} onChange={(e) => setLicenseNumber(e.target.value)} placeholder="License Number" required />
+                                <input type="text" class="form-control" id="lic_num" value={licenseNumber} onChange={(e) => setLicenseNumber(e.target.value)} placeholder="License Number" required />
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputEmail4">Email</label>
@@ -136,17 +170,25 @@ function DriverInformation(props) {
                             <input type="text" class="form-control" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Address" required />
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="inputCity" >Tractor</label>
+                            <div class="form-group col-md-6">
+                                <label for="inputCity" >Tractor Unit #</label>
                                 <input type="text" class="form-control" value={tractor} onChange={(e) => setTractor(e.target.value)} placeholder="Tractor" required />
                             </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputCity" >Tractor Plate #</label>
+                                <input type="text" class="form-control" value={tractorPlate} onChange={(e) => setTractorPlate(e.target.value)} placeholder="Tractor Plate" required />
+                            </div>
                             <div class="form-group col-md-4">
-                                <label for="inputState">Triler</label>
+                                <label for="inputState">Triler #</label>
                                 <input type="text" class="form-control" value={triler} onChange={(e) => setTriler(e.target.value)} placeholder="Triler" required />
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="inputZip">Straight Truck</label>
-                                <input type="text" class="form-control" value={straightTruck} onChange={(e) => setStraightTruck(e.target.value)} placeholder="Straight Truck" required />
+                                <label for="inputState">Triler Plate #</label>
+                                <input type="text" class="form-control" value={trilerPlate} onChange={(e) => setTrilerPlate(e.target.value)} placeholder="Triler Plate" required />
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputZip">Truck Type</label>
+                                <input type="text" class="form-control" value={straightTruck} onChange={(e) => setStraightTruck(e.target.value)} placeholder="Truck Type" required />
                             </div>
                         </div>
                         <header class="panel-heading">
