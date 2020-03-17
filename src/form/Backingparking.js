@@ -43,7 +43,9 @@ class Backingparking extends Component {
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value })
     }
-
+    handleSubmit = (e) => {
+        alert(this.state.P4_Q1_Sc)
+    }
     render() {
         const { handleSubmit, pristine, previousPage, submitting } = this.props;
         console.log(this.P4_Q1_Se)
@@ -62,7 +64,7 @@ class Backingparking extends Component {
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-12 control-label" for="w6-provide_age_proof">Gets out and looks before backing:</label>
 
-                                        <select class="form-control" name="P4_Q1_Se" onChange={this.handleChange}  >
+                                        <select class="form-control" name="P4_Q1_Se" value={this.state.P4_Q1_Se} onChange={this.handleChange}  >
                                             <option value="">Select Choice</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
