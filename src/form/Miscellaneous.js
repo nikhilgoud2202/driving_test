@@ -43,7 +43,7 @@ class Miscellaneous extends Component {
         this.setState({ [e.target.name]: e.target.value })
     }
     render() {
-        const { SubmitHandler, pristine, previousPage, submitting } = this.props;
+        const { handleSubmit, pristine, previousPage, submitting } = this.props;
         return (
             <form >
                 <Col sm="17">
@@ -231,8 +231,8 @@ class Miscellaneous extends Component {
                                 <i className="fa fa-chevron-left" />
                 &nbsp; Previous
             </Button>
-                            <Button color="primary" className="btn-pill pull-right" onClick={SubmitHandler} style={{ marginRight: '70px' }}>
-                                Next &nbsp; <i className="fa fa-chevron-right" />
+                            <Button color="primary" className="btn-pill pull-right" onClick={handleSubmit.bind(this)} style={{ marginRight: '70px' }}>
+                                Submit Test &nbsp; <i className="fa fa-chevron-right" />
                             </Button>
                         </div>
                     </Card>

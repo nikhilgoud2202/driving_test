@@ -50,7 +50,7 @@ class Backingparking extends Component {
         const { handleSubmit, pristine, previousPage, submitting } = this.props;
         console.log(this.P4_Q1_Se)
         return (
-            <form onSubmit={handleSubmit}>
+            <form>
                 <Col sm="12">
                     <Card className="card-border">
                         <CardBody>
@@ -196,7 +196,7 @@ class Backingparking extends Component {
                                 <i className="fa fa-chevron-left" />
                 &nbsp; Previous
             </Button>
-                            <Button color="primary" className="btn-pill pull-right" type="submit" style={{ marginRight: '20px' }}>
+                            <Button color="primary" className="btn-pill pull-right" onClick={handleSubmit} style={{ marginRight: '20px' }}>
                                 Next &nbsp; <i className="fa fa-chevron-right" />
                             </Button>
                         </div>

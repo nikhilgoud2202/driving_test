@@ -10,6 +10,7 @@ import SLOWING from './Slowingstopping'
 import PASSING from './Passingtrning'
 import MISCELLANEOUS from './Miscellaneous'
 import './formstyle.css'
+import { withRouter } from 'react-router-dom';
 
 class Form extends Component {
 
@@ -21,7 +22,6 @@ class Form extends Component {
     this.state = {
       page: 0,
       steps: [
-
         { title: 'PRE-TRIP INSPECTION' },
         { title: 'COUPLING AND UNCOUPLING' },
         { title: 'PLACING VEHICLE IN MOTION AND USE OFCONTROLS' },
@@ -40,6 +40,10 @@ class Form extends Component {
 
   previousPage() {
     this.setState({ page: this.state.page - 1 });
+  }
+
+  SubmitHandler() {
+    this.props.history.push('/end-test');
   }
 
   render() {
@@ -67,13 +71,13 @@ class Form extends Component {
         {page === 2 && (
           <PLACING
             previousPage={this.previousPage}
-            onSubmit={this.nextPage}
+            handleSubmit={this.nextPage}
           />
         )}
         {page === 3 && (
           <BACKING
             previousPage={this.previousPage}
-            onSubmit={this.nextPage}
+            handleSubmit={this.nextPage}
           />
         )}
         {page === 4 && (
@@ -94,7 +98,7 @@ class Form extends Component {
         {page === 6 && (
           <MISCELLANEOUS
             previousPage={this.previousPage}
-            onSubmit={this.SubmitHandler}
+            handleSubmit={this.SubmitHandler}
 
           />
         )}
