@@ -7,11 +7,15 @@ import logo from './logo.png'
 import Form from '../src/form';
 import Login from './login/login';
 import DriverLogin from './driverlogin/driverlogin';
+<<<<<<< Updated upstream
 import DriverInformation from './driverinformation/driverinformation';
 import Endtest from './EndTest/Endtest';
 
 
 
+=======
+import DriverInformation from './driverinformation/DriverInformation';
+>>>>>>> Stashed changes
 
 function App(props) {
 

@@ -77,7 +77,7 @@ function DriverInformation(props) {
     }, [])
     let DriverTest = (e) => {
         e.preventDefault();
-        let Driver_data = {
+        let sdata = {
             "firstName": firstName,
             "lastName": lastName,
             "licenseNumber": licenseNumber,
@@ -94,7 +94,7 @@ function DriverInformation(props) {
         console.log(data)
 
         axios.post("https://drivingtest.herokuapp.com/adddriverdetails",
-            Driver_data
+            data
         )
             .then(
                 resp => {

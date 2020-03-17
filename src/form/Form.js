@@ -3,13 +3,21 @@ import PropTypes from 'prop-types';
 import Stepper from 'react-stepper-horizontal';
 import { Card } from 'reactstrap';
 import PreTripInspection from './PreTripInspection';
+<<<<<<< Updated upstream
+=======
+import PersonalDetailsForm from './PersonalDetailsForm';
+import NomineeDetailsForm from './NomineeDetailsForm';
+>>>>>>> Stashed changes
 import Coupling from './Couplinganduncoupling'
 import PLACING from './Placingmotion'
 import BACKING from './Backingparking'
 import SLOWING from './Slowingstopping'
 import PASSING from './Passingtrning'
 import MISCELLANEOUS from './Miscellaneous'
+<<<<<<< Updated upstream
 import './formstyle.css'
+=======
+>>>>>>> Stashed changes
 
 class Form extends Component {
 
@@ -49,6 +57,7 @@ class Form extends Component {
 
     return (
       <Card>
+<<<<<<< Updated upstream
 
         <div class="form-row">
           <div class="form-group col-md-sm-12">
@@ -56,6 +65,36 @@ class Form extends Component {
         {page === 0 && <PreTripInspection onSubmit={this.nextPage} />}
         {page === 1 && (
           <Coupling
+=======
+        <Stepper steps={steps} activeStep={page} />
+        {page === 0 && <PreTripInspection onSubmit={this.nextPage} />}
+        {page === 1 && (
+          <Coupling
+            previousPage={this.previousPage}
+            onSubmit={this.nextPage}
+          />
+        )}
+        {page === 3 && (
+          <PLACING
+            previousPage={this.previousPage}
+            onSubmit={this.nextPage}
+          />
+        )}
+        {page === 4 && (
+          <BACKING
+            previousPage={this.previousPage}
+            onSubmit={this.nextPage}
+          />
+        )}
+        {page === 5 && (
+          <SLOWING
+            previousPage={this.previousPage}
+            onSubmit={this.nextPage}
+          />
+        )}
+        {page === 6 && (
+          <PASSING
+>>>>>>> Stashed changes
             previousPage={this.previousPage}
             onSubmit={this.nextPage}
           />
@@ -64,6 +103,7 @@ class Form extends Component {
           //   onSubmit={this.nextPage}
           // />
         )}
+<<<<<<< Updated upstream
         {page === 2 && (
           <PLACING
             previousPage={this.previousPage}
@@ -78,6 +118,13 @@ class Form extends Component {
         )}
         {page === 4 && (
           <SLOWING
+=======
+
+
+
+        {page === 7 && (
+          <MISCELLANEOUS
+>>>>>>> Stashed changes
             previousPage={this.previousPage}
             onSubmit={this.nextPage}
           />
