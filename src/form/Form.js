@@ -17,6 +17,7 @@ class Form extends Component {
     super(props);
     this.nextPage = this.nextPage.bind(this);
     this.previousPage = this.previousPage.bind(this);
+
     this.state = {
       page: 0,
       steps: [
@@ -41,11 +42,8 @@ class Form extends Component {
     this.setState({ page: this.state.page - 1 });
   }
 
-
   render() {
-    let SubmitHandler = (e) => {
-      // props.history.push("/end-test");
-    }
+
     const { onSubmit } = this.props;
     const { page, steps } = this.state;
 
@@ -96,8 +94,8 @@ class Form extends Component {
         {page === 6 && (
           <MISCELLANEOUS
             previousPage={this.previousPage}
-            onSubmit={SubmitHandler}
-            onClick="./end-test"
+            onSubmit={this.SubmitHandler}
+
           />
         )}
       </Card>
