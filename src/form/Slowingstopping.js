@@ -60,7 +60,7 @@ class Slowingstopping extends Component {
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-12 control-label" for="w6-provide_age_proof">Gears down properly approaching a stop:</label>
 
-                                        <select class="form-control" name="P5_Q1_Se" onChange={this.handleChange}  >
+                                        <select class="form-control" value={this.state.P5_Q1_Se} name="P5_Q1_Se" onChange={this.handleChange}  >
                                             <option value="">Select Choice</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -69,14 +69,14 @@ class Slowingstopping extends Component {
                                     </div>
 
                                     <div class="form-group col-md-12">
-                                        <input type="number" class="form-control" name="P5_Q1_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                        <input type="number" class="form-control" value={this.state.P5_Q1_Sc} name="P5_Q1_Sc" onChange={this.handleChange} placeholder="Add Score" />
                                     </div>
                                 </div>
                                 <div className="form-group col-md-6">
 
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-12 control-label" for="w6-provide_age_proof">Starts on a grade without rolling back:</label>
-                                        <select class="form-control" name="P5_Q2_Se" onChange={this.handleChange} >
+                                        <select class="form-control" value={this.state.P5_Q2_Se} name="P5_Q2_Se" onChange={this.handleChange} >
                                             <option value="">Select Choice</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -84,7 +84,7 @@ class Slowingstopping extends Component {
                                         </select>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <input type="number" class="form-control" name="P5_Q2_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                        <input type="number" class="form-control" value={this.state.P5_Q2_Sc} name="P5_Q2_Sc" onChange={this.handleChange} placeholder="Add Score" />
                                     </div>
                                 </div>
                                 <div className="form-group col-md-6">
@@ -92,7 +92,7 @@ class Slowingstopping extends Component {
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-12 control-label" for="w6-worked_before">Uses mirrors to check traffic behind unit:</label>
 
-                                        <select class="form-control" name="P5_Q3_Se" onChange={this.handleChange} >
+                                        <select class="form-control" value={this.state.P5_Q3_Se} name="P5_Q3_Se" onChange={this.handleChange} >
                                             <option value="">Select Choice</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -101,14 +101,14 @@ class Slowingstopping extends Component {
                                     </div>
 
                                     <div class="form-group col-md-12">
-                                        <input type="number" class="form-control" name="P5_Q3_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                        <input type="number" class="form-control" value={this.state.P5_Q3_Sc} name="P5_Q3_Sc" onChange={this.handleChange} placeholder="Add Score" />
                                     </div>
                                 </div>
                                 <div className="form-group col-md-6">
 
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-12 control-label" for="w6-provide_age_proof">Avoids sudden stops:</label>
-                                        <select class="form-control" name="P5_Q4_Se" onChange={this.handleChange} >
+                                        <select class="form-control" value={this.state.P5_Q4_Se} name="P5_Q4_Se" onChange={this.handleChange} >
                                             <option value="">Select Choice</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -118,7 +118,7 @@ class Slowingstopping extends Component {
 
 
                                     <div class="form-group col-md-12">
-                                        <input type="number" class="form-control" name="P5_Q4_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                        <input type="number" class="form-control" value={this.state.P5_Q4_Sc} name="P5_Q4_Sc" onChange={this.handleChange} placeholder="Add Score" />
                                     </div>
                                 </div>
                                 <div className="form-group col-md-6">
@@ -126,7 +126,7 @@ class Slowingstopping extends Component {
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-12 control-label" for="w6-worked_before">Stops smoothly without excessive fanning:</label>
 
-                                        <select class="form-control" name="P5_Q5_Se" onChange={this.handleChange} >
+                                        <select class="form-control" value={this.state.P5_Q5_Se} name="P5_Q5_Se" onChange={this.handleChange} >
                                             <option value="">Select Choice</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -135,14 +135,14 @@ class Slowingstopping extends Component {
                                     </div>
 
                                     <div class="form-group col-md-12">
-                                        <input type="number" class="form-control" name="P5_Q5_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                        <input type="number" class="form-control" value={this.state.P5_Q5_Sc} name="P5_Q5_Sc" onChange={this.handleChange} placeholder="Add Score" />
                                     </div>
                                 </div>
                                 <div className="form-group col-md-6">
 
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-12 control-label" for="w6-provide_age_proof">Stops well behind stop line:</label>
-                                        <select class="form-control" name="P5_Q6_Se" onChange={this.handleChange} >
+                                        <select class="form-control" value={this.state.P5_Q6_Se} name="P5_Q6_Se" onChange={this.handleChange} >
                                             <option value="">Select Choice</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -150,7 +150,7 @@ class Slowingstopping extends Component {
                                         </select>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <input type="number" class="form-control" name="P5_Q6_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                        <input type="number" class="form-control" value={this.state.P5_Q6_Sc} name="P5_Q6_Sc" onChange={this.handleChange} placeholder="Add Score" />
                                     </div>
                                 </div>
 
@@ -158,7 +158,7 @@ class Slowingstopping extends Component {
 
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-12 control-label" for="w6-worked_before">Does not encroach on pedestrian’s crosswalk:</label>
-                                        <select class="form-control" name="P5_Q7_Se" onChange={this.handleChange} >
+                                        <select class="form-control" value={this.state.P5_Q7_Se} name="P5_Q7_Se" onChange={this.handleChange} >
                                             <option value="">Select Choice</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -167,20 +167,20 @@ class Slowingstopping extends Component {
                                     </div>
 
                                     <div class="form-group col-md-12">
-                                        <input type="number" class="form-control" name="P5_Q7_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                        <input type="number" class="form-control" value={this.state.P5_Q7_Sc} name="P5_Q7_Sc" onChange={this.handleChange} placeholder="Add Score" />
                                     </div>
                                 </div>
                                 <div className="form-group col-md-6">
                                     <label class="col-sm-12 control-label" for="w6-worked_before">Slowing And Stopping Total Score:</label>
                                     <div class="form-group col-md-12">
-                                        <input type="number" class="form-control" name="P5_total_Sc" onChange={this.handleChange} placeholder="Total Score" />
+                                        <input type="number" class="form-control" value={this.state.P5_total_Sc} name="P5_total_Sc" onChange={this.handleChange} placeholder="Total Score" />
                                     </div>
                                 </div>
 
                                 <div class="form-group col-md-12">
                                     <div class="form-group col-md-12">
                                         <label for="exampleFormControlTextarea1">Comment Section:</label>
-                                        <textarea class="form-control" name="P5_Com" onChange={this.handleChange} id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <textarea class="form-control" value={this.state.P5_Com} name="P5_Com" onChange={this.handleChange} id="exampleFormControlTextarea1" rows="3"></textarea>
                                     </div>
                                 </div>
                             </FormGroup>

@@ -63,7 +63,7 @@ class Miscellaneous extends Component {
                                     <div class="form-group col-md-17">
                                         <label class="col-sm-17 control-label" for="w6-provide_age_proof">Consistently alert and attentive:</label>
 
-                                        <select class="form-control" name="P7_Q1_Se" onChange={this.handleChange}  >
+                                        <select class="form-control" value={this.state.P7_Q1_Se} name="P7_Q1_Se" onChange={this.handleChange}  >
                                             <option value="">Select Choice</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -72,14 +72,14 @@ class Miscellaneous extends Component {
                                     </div>
 
                                     <div class="form-group col-md-17">
-                                        <input type="number" class="form-control" name="P7_Q1_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                        <input type="number" class="form-control" value={this.state.P7_Q1_Sc} name="P7_Q1_Sc" onChange={this.handleChange} placeholder="Add Score" />
                                     </div>
                                 </div>
                                 <div className="form-group col-md-6">
 
                                     <div class="form-group col-md-17">
                                         <label class="col-sm-17 control-label" for="w6-provide_age_proof">Checks mirrors every 5-8 seconds:</label>
-                                        <select class="form-control" name="P7_Q2_Se" onChange={this.handleChange} >
+                                        <select class="form-control" value={this.state.P7_Q2_Se} name="P7_Q2_Se" onChange={this.handleChange} >
                                             <option value="">Select Choice</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -87,7 +87,7 @@ class Miscellaneous extends Component {
                                         </select>
                                     </div>
                                     <div class="form-group col-md-17">
-                                        <input type="number" class="form-control" name="P7_Q2_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                        <input type="number" class="form-control" value={this.state.P7_Q2_Sc} name="P7_Q2_Sc" onChange={this.handleChange} placeholder="Add Score" />
                                     </div>
                                 </div>
                                 <div className="form-group col-md-6">
@@ -95,7 +95,7 @@ class Miscellaneous extends Component {
                                     <div class="form-group col-md-17">
                                         <label class="col-sm-17 control-label" for="w6-provide_age_proof">Adjusts driving to meetchanging conditions:</label>
 
-                                        <select class="form-control" name="P7_Q3_Se" onChange={this.handleChange} >
+                                        <select class="form-control" value={this.state.P7_Q3_Se} name="P7_Q3_Se" onChange={this.handleChange} >
                                             <option value="">Select Choice</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -104,7 +104,7 @@ class Miscellaneous extends Component {
                                     </div>
 
                                     <div class="form-group col-md-17">
-                                        <input type="number" class="form-control" name="P7_Q3_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                        <input type="number" class="form-control" value={this.state.P7_Q3_Sc} name="P7_Q3_Sc" onChange={this.handleChange} placeholder="Add Score" />
                                     </div>
                                 </div>
 
@@ -113,7 +113,7 @@ class Miscellaneous extends Component {
                                     <div class="form-group col-md-17">
                                         <label class="col-sm-17 control-label" for="w6-worked_before">Performs routine functions without taking his eyes off the road:</label>
 
-                                        <select class="form-control" name="P7_Q4_Se" onChange={this.handleChange} >
+                                        <select class="form-control" value={this.state.P7_Q41_Se} name="P7_Q4_Se" onChange={this.handleChange} >
                                             <option value="">Select Choice</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -122,14 +122,14 @@ class Miscellaneous extends Component {
                                     </div>
 
                                     <div class="form-group col-md-17">
-                                        <input type="number" class="form-control" name="P7_Q4_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                        <input type="number" class="form-control" value={this.state.P7_Q4_Sc} name="P7_Q4_Sc" onChange={this.handleChange} placeholder="Add Score" />
                                     </div>
                                 </div>
                                 <div className="form-group col-md-6">
 
                                     <div class="form-group col-md-17">
                                         <label class="col-sm-17 control-label" for="w6-provide_age_proof">Checks instruments regularly while driving:</label>
-                                        <select class="form-control" name="P7_Q5_Se" onChange={this.handleChange} >
+                                        <select class="form-control" value={this.state.P7_Q5_Se} name="P7_Q5_Se" onChange={this.handleChange} >
                                             <option value="">Select Choice</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -139,7 +139,7 @@ class Miscellaneous extends Component {
 
 
                                     <div class="form-group col-md-17">
-                                        <input type="number" class="form-control" name="P7_Q5_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                        <input type="number" class="form-control" value={this.state.P7_Q5_Sc} name="P7_Q5_Sc" onChange={this.handleChange} placeholder="Add Score" />
                                     </div>
                                 </div>
                                 <div className="form-group col-md-6">
@@ -147,7 +147,7 @@ class Miscellaneous extends Component {
                                     <div class="form-group col-md-17">
                                         <label class="col-sm-17 control-label" for="w6-worked_before">Willing to take instructions and suggestions:</label>
 
-                                        <select class="form-control" name="P7_Q6_Se" onChange={this.handleChange} >
+                                        <select class="form-control" value={this.state.P7_Q6_Se} name="P7_Q6_Se" onChange={this.handleChange} >
                                             <option value="">Select Choice</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -156,14 +156,14 @@ class Miscellaneous extends Component {
                                     </div>
 
                                     <div class="form-group col-md-17">
-                                        <input type="number" class="form-control" name="P7_Q6_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                        <input type="number" class="form-control" value={this.state.P7_Q6_Sc} name="P7_Q6_Sc" onChange={this.handleChange} placeholder="Add Score" />
                                     </div>
                                 </div>
                                 <div className="form-group col-md-6">
 
                                     <div class="form-group col-md-17">
                                         <label class="col-sm-17 control-label" for="w6-provide_age_proof">Adequate self-confidence in driving:</label>
-                                        <select class="form-control" name="P7_Q7_Se" onChange={this.handleChange} >
+                                        <select class="form-control" value={this.state.P7_Q7_Se} name="P7_Q7_Se" onChange={this.handleChange} >
                                             <option value="">Select Choice</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -173,7 +173,7 @@ class Miscellaneous extends Component {
 
 
                                     <div class="form-group col-md-17">
-                                        <input type="number" class="form-control" name="P7_Q7_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                        <input type="number" class="form-control" value={this.state.P7_Q7_Sc} name="P7_Q7_Sc" onChange={this.handleChange} placeholder="Add Score" />
                                     </div>
                                 </div>
                                 <div className="form-group col-md-6">
@@ -181,7 +181,7 @@ class Miscellaneous extends Component {
                                     <div class="form-group col-md-17">
                                         <label class="col-sm-17 control-label" for="w6-worked_before">Is not easily angered:</label>
 
-                                        <select class="form-control" name="P7_Q8_Se" onChange={this.handleChange} >
+                                        <select class="form-control" value={this.state.P7_Q8_Se} name="P7_Q8_Se" onChange={this.handleChange} >
                                             <option value="">Select Choice</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -190,7 +190,7 @@ class Miscellaneous extends Component {
                                     </div>
 
                                     <div class="form-group col-md-17">
-                                        <input type="number" class="form-control" name="P7_Q8_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                        <input type="number" class="form-control" value={this.state.P7_Q8_Sc} name="P7_Q8_Sc" onChange={this.handleChange} placeholder="Add Score" />
                                     </div>
                                 </div>
                                 <div className="form-group col-md-6">
@@ -198,7 +198,7 @@ class Miscellaneous extends Component {
                                     <div class="form-group col-md-17">
                                         <label class="col-sm-17 control-label" for="w6-worked_before">Has a positive attitude and good demeanor:</label>
 
-                                        <select class="form-control" name="P7_Q9_Se" onChange={this.handleChange} >
+                                        <select class="form-control" value={this.state.P7_Q9_Se} name="P7_Q9_Se" onChange={this.handleChange} >
                                             <option value="">Select Choice</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -207,13 +207,13 @@ class Miscellaneous extends Component {
                                     </div>
 
                                     <div class="form-group col-md-17">
-                                        <input type="number" class="form-control" name="P7_Q9_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                        <input type="number" class="form-control" value={this.state.P7_Q9_Sc} name="P7_Q9_Sc" onChange={this.handleChange} placeholder="Add Score" />
                                     </div>
                                 </div>
                                 <div className="form-group col-md-6">
                                     <label class="col-sm-17 control-label" for="w6-worked_before">Miscellaneous Total Score:</label>
                                     <div class="form-group col-md-17">
-                                        <input type="number" class="form-control" name="P7_total_Sc" onChange={this.handleChange} placeholder="Total Score" />
+                                        <input type="number" class="form-control" value={this.state.P7_total_Sc} name="P7_total_Sc" onChange={this.handleChange} placeholder="Total Score" />
                                     </div>
                                 </div>
 
@@ -221,7 +221,7 @@ class Miscellaneous extends Component {
                                 <div class="form-group col-md-12">
                                     <div class="form-group col-md-12">
                                         <label for="exampleFormControlTextarea1">Comment Section:</label>
-                                        <textarea class="form-control" name="P7_Com" onChange={this.handleChange} id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <textarea class="form-control" value={this.state.P7_Com} name="P7_Com" onChange={this.handleChange} id="exampleFormControlTextarea1" rows="3"></textarea>
                                     </div>
                                 </div>
                             </FormGroup>
