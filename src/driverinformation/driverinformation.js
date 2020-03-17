@@ -28,7 +28,7 @@ function DriverInformation(props) {
     let [straightTruck, setStraightTruck] = useState('')
     let [testStartingTime, setTestStartingTime] = useState('')
     let [startOdometer, setStartOdometer] = useState('')
-    let [StartLocation, setStartLocation] = useState('')
+    let [startLocation, setStartLocation] = useState('')
 
     let date = new Date()
     useEffect(() => {
@@ -77,7 +77,7 @@ function DriverInformation(props) {
     }, [])
     let DriverTest = (e) => {
         e.preventDefault();
-        let data = {
+        let Driver_data = {
             "firstName": firstName,
             "lastName": lastName,
             "licenseNumber": licenseNumber,
@@ -94,13 +94,15 @@ function DriverInformation(props) {
         console.log(data)
 
         axios.post("https://drivingtest.herokuapp.com/adddriverdetails",
-            data
+            Driver_data
         )
             .then(
                 resp => {
 
                     console.log(resp)
                     localStorage.setItem("start_time", testStartingTime);
+                    localStorage.setItem("startOdmtr", startOdometer)
+                    localStorage.setItem("startLoc", startLocation)
                     props.history.push("/start-test");
                 })
 

@@ -58,6 +58,7 @@ class Placingmotion extends Component {
             P3_total_Sc: ''
         }
     }
+
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value })
     }
@@ -185,7 +186,7 @@ class Placingmotion extends Component {
                                         </select>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <input type="number" class="form-control" value={this.state.P3_B_Q1_Sc} name="P3_B_Q2_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                        <input type="number" class="form-control" value={this.state.P3_B_Q2_Sc} name="P3_B_Q2_Sc" onChange={this.handleChange} placeholder="Add Score" />
                                     </div>
                                 </div>
                                 <div className="form-group col-md-6">
@@ -209,7 +210,7 @@ class Placingmotion extends Component {
 
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-12 control-label" for="w6-worked_before">Downshifts when approaching traffic lights:</label>
-                                        <select class="form-control" value={this.state.P3_B_Q3_Se} name="P3_B_Q3_Se" onChange={this.handleChange} >
+                                        <select class="form-control" value={this.state.P3_B_Q4_Se} name="P3_B_Q4_Se" onChange={this.handleChange} >
                                             <option value="">Select Choice</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -219,7 +220,7 @@ class Placingmotion extends Component {
 
 
                                     <div class="form-group col-md-12">
-                                        <input type="number" class="form-control" value={this.state.P3_B_Q3_Sc} name="P3_B_Q3_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                        <input type="number" class="form-control" value={this.state.P3_B_Q4_Sc} name="P3_B_Q4_Sc" onChange={this.handleChange} placeholder="Add Score" />
                                     </div>
                                 </div>
 

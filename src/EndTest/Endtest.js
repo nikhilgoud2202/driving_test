@@ -27,6 +27,21 @@ function Endtest(props) {
     let Signtwo = () => {
         sign2.clear()
     }
+    let EndHandler = (e) => {
+        e.preventDefault();
+        let end_data = {
+
+        }
+        axios.post("https://drivingtest.herokuapp.com/addTestInformation",
+            end_data
+        )
+            .then(
+                resp => {
+
+                    console.log(resp.data)
+                })
+
+    }
     return (
         <div className="Container ">
             <Card className="card-border">
@@ -35,7 +50,7 @@ function Endtest(props) {
 
                         <h4 class="panel-title">End Test Information:</h4>
                     </header>
-                    <form >
+                    <form onSubmit={EndHandler}>
 
                         <div class="form-row">
                             <div class="form-group col-md-6">

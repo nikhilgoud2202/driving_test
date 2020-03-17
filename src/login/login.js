@@ -1,3 +1,5 @@
+
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {
@@ -31,6 +33,7 @@ function Login(props) {
           if (resp.data) {
             localStorage.setItem("userID", resp.data._id);
             props.history.push("/driverlogin");
+            clearData
           } else {
             alert("You are not authorized to perform this action");
           }
