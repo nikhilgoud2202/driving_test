@@ -264,7 +264,7 @@ class Miscellaneous extends Component {
                                 <div className="form-group col-md-6">
                                     <label class="col-sm-17 control-label" for="w6-worked_before">Miscellaneous Total Score:</label>
                                     <div class="form-group col-md-17">
-                                        <input type="number" class="form-control" value={formData.P7_total_Sc} name="P7_total_Sc" onChange={this.handleChange} placeholder="Total Score" />
+                                        <input type="number" class="form-control" disabled value={formData.P7_total_Sc} name="P7_total_Sc" onChange={this.handleChange} placeholder="Total Score" />
                                     </div>
                                 </div>
 

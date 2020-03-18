@@ -215,7 +215,7 @@ class Couplingandcoupling extends Component {
                                 <div className="form-group col-md-6">
                                     <label class="col-sm-12 control-label" for="w6-worked_before"> Coupling And Uncoupling Total Score:</label>
                                     <div class="form-group col-md-12">
-                                        <input type="number" class="form-control" value={formData.P2_total_Sc} name="P2_total_Sc" onChange={this.handleChange} placeholder="Total Score" />
+                                        <input type="number" class="form-control" disabled value={formData.P2_total_Sc} name="P2_total_Sc" onChange={this.handleChange} placeholder="Total Score" />
                                     </div>
                                 </div>
 

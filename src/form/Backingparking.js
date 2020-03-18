@@ -199,7 +199,7 @@ class Backingparking extends Component {
                                 <div className="form-group col-md-6">
                                     <label class="col-sm-12 control-label" for="w6-worked_before">Backing And Parking Total Score:</label>
                                     <div class="form-group col-md-12">
-                                        <input type="number" class="form-control" value={formData.P4_total_Sc} name="P4_total_Sc" onChange={this.handleChange} placeholder="Total Score" />
+                                        <input type="number" class="form-control" disabled value={formData.P4_total_Sc} name="P4_total_Sc" onChange={this.handleChange} placeholder="Total Score" />
                                     </div>
                                 </div>
                                 <div class="form-group col-md-12">
