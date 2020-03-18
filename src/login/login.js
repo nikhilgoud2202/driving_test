@@ -1,6 +1,4 @@
-
-
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import {
   Button,
@@ -9,31 +7,48 @@ import {
   Col,
   FormGroup
 } from 'reactstrap';
+import { render } from 'react-dom';
+import Header from '../Header';
 
-function Login(props) {
-  let [username, setUsername] = useState('')
-  let [password, setPassword] = useState('')
-  useEffect(() => {
+class Login extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      username: '',
+      password: '',
+
+    }
+  }
+  componentDidMount() {
 
     if (localStorage.userID) {
-      props.history.push("/driverlogin");
+      this.props.history.push("/driverlogin");
     }
 
-  })
-  let LoginHandler = (e) => {
+  }
+  onChange = (e) => {
+
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
+  LoginHandler = (e) => {
     e.preventDefault();
-    axios.post("https://drivingtest.herokuapp.com/login", {
-      username,
-      password
-    })
+
+    let loginData = {
+      username: this.state.username,
+      password: this.state.password
+    }
+    console.log(loginData)
+
+    axios.post("https://drivingtest.herokuapp.com/login", loginData)
       .then(
         resp => {
 
           console.log(resp)
           if (resp.data) {
             localStorage.setItem("userID", resp.data._id);
-            props.history.push("/driverlogin");
-            clearData
+            this.props.history.push("/driverlogin");
+
           } else {
             alert("You are not authorized to perform this action");
           }
@@ -45,47 +60,51 @@ function Login(props) {
 
   }
 
+  render() {
+    return (
+      <div>
+        <Header show={false} />
+        <div className="Container">
+          <Card className="card-border">
+            <CardBody>
+              <header className="panel-heading">
 
-  return (
-    <div className="Container">
-      <Card className="card-border">
-        <CardBody>
-          <header className="panel-heading">
+                <h2 className="panel-title">Login</h2>
+              </header>
+              <form onSubmit={this.LoginHandler}>
+                <div className="form-row">
+                  <div className="col-md-6 mb-3">
+                    <label for="validationTooltip03">User Name</label>
+                    <input type="text" className="form-control"
+                      onChange={this.onChange}
+                      id="validationTooltip03" autocomplete="off" name="username" placeholder="User Name" required />
 
-            <h2 className="panel-title">Login</h2>
-          </header>
-          <form onSubmit={LoginHandler}>
-            <div className="form-row">
-              <div className="col-md-6 mb-3">
-                <label for="validationTooltip03">User Name</label>
-                <input type="text" className="form-control"
-                  onChange={(e) => setUsername(e.target.value)}
-                  id="validationTooltip03" autocomplete="off" placeholder="User Name" required />
+                  </div>
+                </div>
+                <div className="form-row">
+                  <div className="col-md-6 mb-3">
+                    <label for="validationTooltip03">Password</label>
+                    <input type="password" className="form-control"
+                      onChange={this.onChange} id="validationTooltip03" name="password" autocomplete="off" placeholder="Password" required />
 
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="col-md-6 mb-3">
-                <label for="validationTooltip03">Password</label>
-                <input type="password" className="form-control"
-                  onChange={(e) => setPassword(e.target.value)} id="validationTooltip03" autocomplete="off" placeholder="Password" required />
+                  </div>
+                </div>
 
-              </div>
-            </div>
+                <div className="form-group row">
+                  <div className="col-sm-10">
+                    <button type="submit" className="btn btn-primary">Sign in</button>
+                  </div>
+                </div>
 
-            <div className="form-group row">
-              <div className="col-sm-10">
-                <button type="submit" className="btn btn-primary">Sign in</button>
-              </div>
-            </div>
-
-          </form>
-        </CardBody>
-      </Card>
-    </div>
-  )
+              </form>
+            </CardBody>
+          </Card>
+        </div>
+      </div>
+    )
+  }
 }
 
 
+export default (Login)
 
-export default Login;

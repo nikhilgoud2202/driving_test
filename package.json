@@ -11,6 +11,7 @@
     "classnames": "^2.2.6",
     "core-js": "^2.5.7",
     "font-awesome": "^4.7.0",
+    "history": "^4.10.1",
     "html2canvas": "^1.0.0-rc.5",
     "jspdf-react": "^1.0.11",
     "react-axios": "^2.0.3",

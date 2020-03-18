@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+
+import React, { Component } from 'react';
+import axios from 'axios';
 import SignatureCanvas from 'react-signature-canvas'
 import {
     Button,
@@ -7,133 +9,169 @@ import {
     Col,
     FormGroup
 } from 'reactstrap';
+import { render } from 'react-dom';
 import './endstyle.css';
-function Endtest(props) {
-    let [sign1, setSign1] = useState('')
-    let [sign2, setSign2] = useState('')
-    let [endTime, setEndTime] = useState('')
-    let [endOdameter, setEndOdameter] = useState('')
-    let [endLocation, setEndLocation] = useState('')
-    let [totalKm, setTotalKm] = useState('')
-    let [totalPoints, setTotalPoints] = useState('')
-    let [qualified, setQualified] = useState('');
-    let [examinerComment, setExaminerComment] = useState('');
-    let [driverComment, setDriverComment] = useState('')
+import Header from '../Header';
 
 
-    let Signone = () => {
-        sign1.clear()
+class Endtest extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            sign2: {},
+            sign1: {},
+            totalPoints: '',
+            endLocation: '',
+            endOdometer: '',
+            endTime: '',
+            totalKm: '',
+            driverComment: '',
+            examinerComment: '',
+            qualified: '',
+            sign1trimmedDataURL: null,
+            sign2trimmedDataURL: null
+
+
+        }
     }
-    let Signtwo = () => {
-        sign2.clear()
+
+
+    Signone = () => {
+        this.sign1.clear()
     }
-    let EndHandler = (e) => {
+    Signtwo = () => {
+        this.sign2.clear()
+    }
+    trim = () => {
+        this.setState({
+            sign2trimmedDataURL: this.sigPad.getTrimmedCanvas()
+                .toDataURL('image/png')
+        })
+    }
+    EndHandler = (e) => {
         e.preventDefault();
         let end_data = {
 
         }
-        axios.post("https://drivingtest.herokuapp.com/addTestInformation",
-            end_data
-        )
-            .then(
-                resp => {
+        // axios.post("https://drivingtest.herokuapp.com/addTestInformation",
+        //     end_data
+        // )
+        //     .then(
+        //         resp => {
 
-                    console.log(resp.data)
-                })
+        //             console.log(resp.data)
+        //         })
 
     }
-    return (
-        <div className="Container ">
-            <Card className="card-border">
-                <CardBody>
-                    <header class="panel-heading">
+    handleChange = (e) => {
 
-                        <h4 class="panel-title">End Test Information:</h4>
-                    </header>
-                    <form onSubmit={EndHandler}>
+        this.setState({ [e.target.name]: e.target.value })
 
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputZip"> Test End Time</label>
-                                <input type="time" class="form-control" placeholder="Test  End Time" required />
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputZip">End Odometer</label>
-                                <input type="number" class="form-control" placeholder=" End Odometer Reading" required />
-                            </div>
-                            <div class="form-group col-md-12">
-                                <label for="inputZip">End Location</label>
-                                <input type="text" class="form-control" placeholder="End Location" required />
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="inputZip">Total Kilometers Driven</label>
-                                <input type="number" class="form-control" placeholder="Total Kilometers Driven" required />
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="inputZip">Total Points</label>
-                                <input type="number" class="form-control" placeholder=" Total Points" required />
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="inputZip">Qualified</label>
-
-                                <select class="form-control" required>
-                                    <option value="">Select Choice</option>
-                                    <option value="Qualified">Qualified</option>
-                                    <option value="Not Qualified">Not Qualified</option>
-                                    <option value="Company to Decide">Company to Decide</option>
-                                </select>
-                            </div>
+    }
 
 
 
-                            <div class="form-group col-md-12">
-                                <label for="exampleFormControlTextarea1">Examiner Comment Section:</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="exampleFormControlTextarea1">Examiner Signature:</label>
-                                <SignatureCanvas penColor='green'
-                                    ref={(ref) => { setSign1(ref) }} canvasProps={{ width: 300, height: 100, className: 'sigCanvas' }} />
-                            </div>
-                            <div class="form-group col-md-6 sign-btn">
-                                <a class="btn btn-primary  pull-center" onClick={Signone}>Clear Signature</a>
+    render() {
 
-                            </div>
-                            <div class="form-group col-md-12 ">
-                                <label for="exampleFormControlTextarea1">Driver Comment Section:</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="exampleFormControlTextarea1">Driver Signature:</label>
-                                <SignatureCanvas penColor='green'
-                                    ref={(ref) => { setSign2(ref) }} canvasProps={{ width: 300, height: 100, className: 'sigCanvas' }} />
-                            </div>
+        return (
+            <div>
+                <Header show={true} />
+                <div className="Container ">
+                    <Card className="card-border">
+                        <CardBody>
+                            <header class="panel-heading">
 
-                            <div class="form-group col-md-6 sign-btn">
+                                <h4 class="panel-title">End Test Information:</h4>
+                            </header>
+                            <form onSubmit={this.EndHandler}>
 
-                                <a class="btn btn-primary  pull-center" onClick={Signtwo} >Clear Signature</a>
-                            </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputZip"> Test End Time</label>
+                                        <input type="time" class="form-control" onChange={this.handleChange} name="endTime" placeholder="Test  End Time" required />
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputZip">End Odometer</label>
+                                        <input type="number" class="form-control" onChange={this.handleChange} name="endOdometer" placeholder=" End Odometer Reading" required />
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label for="inputZip">End Location</label>
+                                        <input type="text" class="form-control" onChange={this.handleChange} name="endLocation" placeholder="End Location" required />
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputZip">Total Kilometers Driven</label>
+                                        <input type="number" class="form-control" onChange={this.handleChange} name="totalKm" placeholder="Total Kilometers Driven" required />
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputZip">Total Points</label>
+                                        <input type="number" class="form-control" onChange={this.handleChange} name="totalPoints" placeholder=" Total Points" required />
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputZip">Qualified</label>
+
+                                        <select class="form-control" onChange={this.handleChange} name="qualified" required>
+                                            <option value="">Select Choice</option>
+                                            <option value="Qualified">Qualified</option>
+                                            <option value="Not Qualified">Not Qualified</option>
+                                            <option value="Company to Decide">Company to Decide</option>
+                                        </select>
+                                    </div>
 
 
-                            <div class="form-group col-md-12">
-                                <button type="submit" class="btn btn-primary  pull-right" >End Test</button>
 
-                            </div>
-                        </div>
+                                    <div class="form-group col-md-12">
+                                        <label for="exampleFormControlTextarea1">Examiner Comment Section:</label>
+                                        <textarea class="form-control" onChange={this.handleChange} name="examinerComment" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="exampleFormControlTextarea1">Examiner Signature:</label>
+                                        <SignatureCanvas penColor='green'
+                                            ref={(ref) => { this.sign1 = ref }} canvasProps={{ width: 300, height: 100, className: 'sigCanvas' }} />
+                                    </div>
+                                    <div class="form-group col-md-6 sign-btn">
+                                        <a class="btn btn-primary  pull-center" onClick={this.Signone}>Clear Signature</a>
+
+                                    </div>
+                                    <div class="form-group col-md-12 ">
+                                        <label for="exampleFormControlTextarea1">Driver Comment Section:</label>
+                                        <textarea class="form-control" onChange={this.handleChange} name="driverComment" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="exampleFormControlTextarea1">Driver Signature:</label>
+                                        <SignatureCanvas penColor='green'
+                                            ref={(ref) => { this.sign2 = ref }} canvasProps={{ width: 300, height: 100, className: 'sigCanvas' }} />
+                                    </div>
+
+                                    <div class="form-group col-md-6 sign-btn">
+
+                                        <a class="btn btn-primary  pull-center" onClick={this.Signtwo} >Clear Signature</a>
+                                    </div>
+
+
+                                    <div class="form-group col-md-12">
+                                        <button type="submit" class="btn btn-primary  pull-right" >End Test</button>
+
+                                    </div>
+                                </div>
+
+
+                                {this.state.sign1trimmedDataURL
+                                    ? <img
+                                        src={this.state.trimmedDataURL} />
+                                    : null}
+
+                            </form>
 
 
 
 
-                    </form>
+                        </CardBody>
+                    </Card>
+                </div>
 
-
-
-
-                </CardBody>
-            </Card>
-
-
-        </div>
-    )
+            </div>
+        )
+    }
 }
 export default Endtest;

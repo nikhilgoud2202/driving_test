@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { reducer as reducerForm } from 'redux-form';
+import drivingTestFormreducer from './drivingTestFormreducer'
 
 const rootReducer = combineReducers({
-  form: reducerForm
+   formData: drivingTestFormreducer,
 });
 
 export default rootReducer;

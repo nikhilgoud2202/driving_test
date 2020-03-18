@@ -14,7 +14,9 @@ import {
 } from '../validation/normalize';
 import Select from '../components/FormInput/FormSelect';
 import FormInput from '../components/FormInput/FormInput';
-import { render } from 'react-dom';
+import { Dispatch, AnyAction } from "redux";
+import { connect } from "react-redux";
+import { updateData } from "../redux/actions/index"
 
 
 
@@ -38,19 +40,37 @@ class Backingparking extends Component {
             P4_Q7_Sc: '',
             P4_Com: '',
             P4_total_Sc: '',
+            tres: {}
         }
     }
-    handleChange = (e) => {
-        this.setState({ [e.target.name]: e.target.value })
+    handleChangeText = (e) => {
+        this.props.updateData({ [e.target.name]: e.target.value })
     }
-    handleSubmit = (e) => {
-        alert(this.state.P4_Q1_Sc)
+
+    handleChange = (e) => {
+        this.props.updateData({ [e.target.name]: e.target.value })
+        // var tres = parseFloat(this.props.formData.P1_Q1_Sc + this.props.formData.P1_Q2_Sc + this.props.formData.P1_Q3_Sc + this.props.formData.P1_Q4_Sc + this.props.formData.P1_Q5_Sc + this.props.formData.P1_Q6_Sc + this.props.formData.P1_Q7_Sc + this.props.formData.P1_Q8_Sc);
+        this.state.tres[e.target.name] = parseFloat(e.target.value);
+        console.log(this.state.tres)
+        var res = 0;
+        Object.keys(this.state.tres).forEach(element => {
+            res = res + this.state.tres[element];
+        });
+        // var arr = Object.keys(this.state.tres);
+        // arr.forEach(element => {
+        //     console.log(element)
+        // });
+        // var res = this.state.tres["P1_Q1_Sc"] + this.state.tres["P1_Q2_Sc"] +
+        // this.state.tres = this.state.tres + parseInt(e.target.value);
+        this.props.updateData({ P4_total_Sc: res });
+
     }
     render() {
-        const { handleSubmit, pristine, previousPage, submitting } = this.props;
-        console.log(this.P4_Q1_Se)
+        const { handleSubmit, pristine, previousPage, submitting, formData } = this.props;
+
+        console.log(formData)
         return (
-            <form onSubmit={handleSubmit}>
+            <form>
                 <Col sm="12">
                     <Card className="card-border">
                         <CardBody>
@@ -64,7 +84,7 @@ class Backingparking extends Component {
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-12 control-label" for="w6-provide_age_proof">Gets out and looks before backing:</label>
 
-                                        <select class="form-control" value={this.state.P4_Q1_Se} name="P4_Q1_Se" onChange={this.handleChange}  >
+                                        <select class="form-control" value={formData.P4_Q1_Se} name="P4_Q1_Se" onChange={this.handleChangeText}  >
                                             <option value="">Select Choice</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -73,14 +93,14 @@ class Backingparking extends Component {
                                     </div>
 
                                     <div class="form-group col-md-12">
-                                        <input type="number" class="form-control" value={this.state.P4_Q1_Sc} name="P4_Q1_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                        <input type="number" class="form-control" value={formData.P4_Q1_Sc} name="P4_Q1_Sc" onChange={this.handleChange} placeholder="Add Score" />
                                     </div>
                                 </div>
                                 <div className="form-group col-md-6">
 
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-12 control-label" for="w6-provide_age_proof">Rolls down window to listen for danger while backing:</label>
-                                        <select class="form-control" value={this.state.P4_Q2_Se} name="P4_Q2_Se" onChange={this.handleChange} >
+                                        <select class="form-control" value={formData.P4_Q2_Se} name="P4_Q2_Se" onChange={this.handleChangeText} >
                                             <option value="">Select Choice</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -88,7 +108,7 @@ class Backingparking extends Component {
                                         </select>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <input type="number" class="form-control" value={this.state.P4_Q2_Sc} name="P4_Q2_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                        <input type="number" class="form-control" value={formData.P4_Q2_Sc} name="P4_Q2_Sc" onChange={this.handleChange} placeholder="Add Score" />
                                     </div>
                                 </div>
                                 <div className="form-group col-md-6">
@@ -96,7 +116,7 @@ class Backingparking extends Component {
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-12 control-label" for="w6-worked_before">Looks back as well as uses mirrors while backing:</label>
 
-                                        <select class="form-control" value={this.state.P4_Q3_Se} name="P4_Q3_Se" onChange={this.handleChange} >
+                                        <select class="form-control" value={formData.P4_Q3_Se} name="P4_Q3_Se" onChange={this.handleChangeText} >
                                             <option value="">Select Choice</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -105,14 +125,14 @@ class Backingparking extends Component {
                                     </div>
 
                                     <div class="form-group col-md-12">
-                                        <input type="number" class="form-control" value={this.state.P4_Q3_Sc} name="P4_Q3_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                        <input type="number" class="form-control" value={formData.P4_Q3_Sc} name="P4_Q3_Sc" onChange={this.handleChange} placeholder="Add Score" />
                                     </div>
                                 </div>
                                 <div className="form-group col-md-6">
 
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-12 control-label" for="w6-provide_age_proof">Avoids backing from blind side:</label>
-                                        <select class="form-control" value={this.state.P4_Q4_Se} name="P4_Q4_Se" onChange={this.handleChange} >
+                                        <select class="form-control" value={formData.P4_Q4_Se} name="P4_Q4_Se" onChange={this.handleChangeText} >
                                             <option value="">Select Choice</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -122,7 +142,7 @@ class Backingparking extends Component {
 
 
                                     <div class="form-group col-md-12">
-                                        <input type="number" class="form-control" value={this.state.P4_Q4_Sc} name="P4_Q4_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                        <input type="number" class="form-control" value={formData.P4_Q4_Sc} name="P4_Q4_Sc" onChange={this.handleChange} placeholder="Add Score" />
                                     </div>
                                 </div>
                                 <div className="form-group col-md-6">
@@ -130,7 +150,7 @@ class Backingparking extends Component {
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-12 control-label" for="w6-worked_before">Signals when backing with horn and flashers:</label>
 
-                                        <select class="form-control" value={this.state.P4_Q5_Se} name="P4_Q5_Se" onChange={this.handleChange} >
+                                        <select class="form-control" value={formData.P4_Q5_Se} name="P4_Q5_Se" onChange={this.handleChangeText} >
                                             <option value="">Select Choice</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -139,14 +159,14 @@ class Backingparking extends Component {
                                     </div>
 
                                     <div class="form-group col-md-12">
-                                        <input type="number" class="form-control" value={this.state.P4_Q5_Sc} name="P4_Q5_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                        <input type="number" class="form-control" value={formData.P4_Q5_Sc} name="P4_Q5_Sc" onChange={this.handleChange} placeholder="Add Score" />
                                     </div>
                                 </div>
                                 <div className="form-group col-md-6">
 
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-12 control-label" for="w6-provide_age_proof">Controls speed and direction properly while backing :</label>
-                                        <select class="form-control" value={this.state.P4_Q6_Se} name="P4_Q6_Se" onChange={this.handleChange} >
+                                        <select class="form-control" value={formData.P4_Q6_Se} name="P4_Q6_Se" onChange={this.handleChangeText} >
                                             <option value="">Select Choice</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -154,7 +174,7 @@ class Backingparking extends Component {
                                         </select>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <input type="number" class="form-control" value={this.state.P4_Q6_Sc} name="P4_Q6_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                        <input type="number" class="form-control" value={formData.P4_Q6_Sc} name="P4_Q6_Sc" onChange={this.handleChange} placeholder="Add Score" />
                                     </div>
                                 </div>
 
@@ -162,7 +182,7 @@ class Backingparking extends Component {
 
                                     <div class="form-group col-md-12">
                                         <label class="col-sm-12 control-label" for="w6-worked_before">Secures unit with both parking brakes before exiting cab:</label>
-                                        <select class="form-control" value={this.state.P4_Q7_Se} name="P4_Q7_Se" onChange={this.handleChange} >
+                                        <select class="form-control" value={formData.P4_Q7_Se} name="P4_Q7_Se" onChange={this.handleChangeText} >
                                             <option value="">Select Choice</option>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
@@ -171,7 +191,7 @@ class Backingparking extends Component {
                                     </div>
 
                                     <div class="form-group col-md-12">
-                                        <input type="number" class="form-control" value={this.state.P4_Q7_Sc} name="P4_Q7_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                        <input type="number" class="form-control" value={formData.P4_Q7_Sc} name="P4_Q7_Sc" onChange={this.handleChange} placeholder="Add Score" />
                                     </div>
 
                                 </div>
@@ -179,13 +199,13 @@ class Backingparking extends Component {
                                 <div className="form-group col-md-6">
                                     <label class="col-sm-12 control-label" for="w6-worked_before">Backing And Parking Total Score:</label>
                                     <div class="form-group col-md-12">
-                                        <input type="number" class="form-control" value={this.state.P4_total_Sc} name="P4_total_Sc" onChange={this.handleChange} placeholder="Total Score" />
+                                        <input type="number" class="form-control" value={formData.P4_total_Sc} name="P4_total_Sc" onChange={this.handleChange} placeholder="Total Score" />
                                     </div>
                                 </div>
                                 <div class="form-group col-md-12">
                                     <div class="form-group col-md-12">
                                         <label for="exampleFormControlTextarea1">Comment Section:</label>
-                                        <textarea class="form-control" value={this.state.P4_Com} name="P4_Com" onChange={this.handleChange} id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <textarea class="form-control" value={formData.P4_Com} name="P4_Com" onChange={this.handleChangeText} id="exampleFormControlTextarea1" rows="3"></textarea>
                                     </div>
                                 </div>
 
@@ -196,7 +216,7 @@ class Backingparking extends Component {
                                 <i className="fa fa-chevron-left" />
                 &nbsp; Previous
             </Button>
-                            <Button color="primary" className="btn-pill pull-right" type="submit" style={{ marginRight: '20px' }}>
+                            <Button color="primary" className="btn-pill pull-right" onClick={handleSubmit} style={{ marginRight: '20px' }}>
                                 Next &nbsp; <i className="fa fa-chevron-right" />
                             </Button>
                         </div>
@@ -212,9 +232,15 @@ Backingparking.propTypes = {
     previousPage: PropTypes.func
 };
 
-export default reduxForm({
-    form: 'drivingtestform',
-    destroyOnUnmount: false,
-    forceUnregisterOnUnmount: true,
-    validate
-})(Backingparking);
+const mapStateToProps = state => {
+    return {
+        formData: state.formData
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        updateData: (data) => dispatch(updateData(data)),
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Backingparking);
