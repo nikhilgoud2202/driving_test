@@ -37,7 +37,20 @@ class Endtest extends Component {
         }
     }
 
+    componentDidMount() {
 
+
+
+        if (!localStorage.userID) {
+            this.props.history.push("/");
+        }
+        else if (!localStorage.lic_ID) {
+            this.props.history.push("/driverlogin");
+        }
+        else if (localStorage.start_time) {
+            this.props.history.push("/start-test");
+        }
+    }
     Signone = () => {
         this.sign1.clear()
     }
@@ -52,29 +65,38 @@ class Endtest extends Component {
     }
     EndHandler = (e) => {
         e.preventDefault();
-        let end_data = {
-            licenseNumber: localStorage.getItem("lic_ID"),
-            startTime: localStorage.getItem("start_time"),
-            startOdometer: localStorage.getItem("startOdmtr"),
-            startLocation: localStorage.getItem("startLoc"),
-            endTime: this.state.endTime,
-            endOdometer: this.state.endOdometer,
-            KMsDriven: this.state.totalKm,
-            totalPoints: this.state.totalPoints,
-            qualified: this.state.qualified,
-            endLocation: this.state.endLocation,
-            examinerComments: this.state.examinerComment,
-            driverComments: this.state.driverComment
+        if (window.confirm("are you sure you want end the Test!")) {
+            let end_data = {
+                licenseNumber: localStorage.getItem("lic_ID"),
+                startTime: localStorage.getItem("startTime"),
+                startOdometer: localStorage.getItem("startOdmtr"),
+                startLocation: localStorage.getItem("startLoc"),
+                endTime: this.state.endTime,
+                endOdometer: this.state.endOdometer,
+                KMsDriven: this.state.totalKm,
+                totalPoints: this.state.totalPoints,
+                qualified: this.state.qualified,
+                endLocation: this.state.endLocation,
+                examinerComments: this.state.examinerComment,
+                driverComments: this.state.driverComment
+            }
+            axios.post("https://drivingtest.herokuapp.com/addTestInformation",
+                end_data
+            )
+                .then(
+                    resp => {
+
+                        console.log(resp.data)
+                        localStorage.removeItem("firstname");
+                        localStorage.removeItem("startOdmtr");
+                        localStorage.removeItem("startLoc");
+                        localStorage.removeItem("startTime");
+                        localStorage.removeItem("lastname");
+                        localStorage.removeItem("lic_ID");
+                        this.props.history.push("/driverlogin");
+
+                    })
         }
-        axios.post("https://drivingtest.herokuapp.com/addTestInformation",
-            end_data
-        )
-            .then(
-                resp => {
-
-                    console.log(resp.data)
-                })
-
     }
     handleChange = (e) => {
 

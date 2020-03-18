@@ -76,8 +76,9 @@ class Miscellaneous extends Component {
     handleSubmit = (e) => {
 
         e.preventDefault();
-        if (window.confirm("are you sure you want to end The Test!")) {
+        if (window.confirm("are you sure you completed all Tests!")) {
             let licenseNumber = this.state.licenseNumber;
+            let startTime = localStorage.getItem("start_time")
             console.log(this.props.formData)
             let answerData = {
                 licenseNumber: licenseNumber,
@@ -88,6 +89,8 @@ class Miscellaneous extends Component {
             )
                 .then(
                     resp => {
+                        localStorage.removeItem("start_time");
+                        localStorage.setItem("startTime", startTime)
                         this.props.history.push('/end-test');
                     })
 
