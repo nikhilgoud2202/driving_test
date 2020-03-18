@@ -30,7 +30,8 @@ class Endtest extends Component {
             examinerComment: '',
             qualified: '',
             sign1trimmedDataURL: null,
-            sign2trimmedDataURL: null
+            sign2trimmedDataURL: null,
+            tres: {}
 
 
         }
@@ -52,16 +53,27 @@ class Endtest extends Component {
     EndHandler = (e) => {
         e.preventDefault();
         let end_data = {
-
+            licenseNumber: localStorage.getItem("lic_ID"),
+            startTime: localStorage.getItem("start_time"),
+            startOdometer: localStorage.getItem("startOdmtr"),
+            startLocation: localStorage.getItem("startLoc"),
+            endTime: this.state.endTime,
+            endOdometer: this.state.endOdometer,
+            KMsDriven: this.state.totalKm,
+            totalPoints: this.state.totalPoints,
+            qualified: this.state.qualified,
+            endLocation: this.state.endLocation,
+            examinerComments: this.state.examinerComment,
+            driverComments: this.state.driverComment
         }
-        // axios.post("https://drivingtest.herokuapp.com/addTestInformation",
-        //     end_data
-        // )
-        //     .then(
-        //         resp => {
+        axios.post("https://drivingtest.herokuapp.com/addTestInformation",
+            end_data
+        )
+            .then(
+                resp => {
 
-        //             console.log(resp.data)
-        //         })
+                    console.log(resp.data)
+                })
 
     }
     handleChange = (e) => {
@@ -69,7 +81,17 @@ class Endtest extends Component {
         this.setState({ [e.target.name]: e.target.value })
 
     }
+    handleChanges = (e) => {
 
+        this.setState({ [e.target.name]: e.target.value })
+        this.state.tres[e.target.name] = parseFloat(e.target.value);
+        var startOdmtr = localStorage.getItem("startOdmtr")
+        console.log(startOdmtr)
+        var res = parseFloat(this.state.tres["endOdometer"] - startOdmtr)
+        console.log(res)
+        this.setState({ totalKm: res })
+
+    }
 
 
     render() {
@@ -93,7 +115,7 @@ class Endtest extends Component {
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputZip">End Odometer</label>
-                                        <input type="number" class="form-control" onChange={this.handleChange} name="endOdometer" placeholder=" End Odometer Reading" required />
+                                        <input type="number" class="form-control" min={localStorage.getItem("startOdmtr")} onChange={this.handleChanges} name="endOdometer" placeholder=" End Odometer Reading" required />
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="inputZip">End Location</label>
@@ -101,7 +123,7 @@ class Endtest extends Component {
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="inputZip">Total Kilometers Driven</label>
-                                        <input type="number" class="form-control" onChange={this.handleChange} name="totalKm" placeholder="Total Kilometers Driven" required />
+                                        <input type="number" class="form-control" disabled value={this.state.totalKm} onChange={this.handleChange} name="totalKm" placeholder="Total Kilometers Driven" required />
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="inputZip">Total Points</label>
@@ -156,10 +178,10 @@ class Endtest extends Component {
                                 </div>
 
 
-                                {this.state.sign1trimmedDataURL
+                                {/* {this.state.sign1trimmedDataURL
                                     ? <img
                                         src={this.state.trimmedDataURL} />
-                                    : null}
+                                    : null} */}
 
                             </form>
 
