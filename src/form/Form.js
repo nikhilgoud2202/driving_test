@@ -35,7 +35,20 @@ class Form extends Component {
     };
 
   }
+  componentDidMount() {
 
+
+
+    if (!localStorage.userID) {
+      this.props.history.push("/");
+    }
+    else if (!localStorage.lic_ID) {
+      this.props.history.push("/driverlogin");
+    }
+    else if (!localStorage.start_time) {
+      this.props.history.push("/driverlogin");
+    }
+  }
   nextPage() {
     this.setState({ page: this.state.page + 1 });
   }
