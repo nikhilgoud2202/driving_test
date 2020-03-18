@@ -42,7 +42,7 @@ class UserData extends Component {
         })
             .then(
                 resp => {
-                    console.log(resp.data)
+                    console.log("driverinfo", resp.data)
 
                     this.setState({ driverInfo: resp.data })
 
@@ -52,7 +52,7 @@ class UserData extends Component {
         })
             .then(
                 resp => {
-                    console.log(resp.data)
+                    console.log("test Information", resp.data)
 
                     this.setState({ endInfo: resp.data })
 
@@ -62,7 +62,7 @@ class UserData extends Component {
         })
             .then(
                 resp => {
-                    console.log(resp.data)
+                    console.log("Answers", resp.data)
 
                     this.setState({ answers: resp.data })
 
