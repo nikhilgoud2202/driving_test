@@ -25,6 +25,7 @@ class Placingmotion extends Component {
     constructor(props) {
         super(props)
         this.state = {
+
             tres: {}
         }
 
@@ -53,7 +54,7 @@ class Placingmotion extends Component {
         // });
         // var res = this.state.tres["P1_Q1_Sc"] + this.state.tres["P1_Q2_Sc"] +
         // this.state.tres = this.state.tres + parseInt(e.target.value);
-        this.props.updateData({ P5_total_Sc: res });
+        this.props.updateData({ P3_total_Sc: res });
 
     }
     render() {
