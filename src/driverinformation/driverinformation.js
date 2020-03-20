@@ -9,6 +9,8 @@ import {
 } from 'reactstrap';
 import { render } from 'react-dom';
 import Header from '../Header';
+import { connect } from "react-redux";
+import { updateTestData, clearData } from "../redux/actions/index"
 
 class DriverInformation extends Component {
     constructor(props) {
@@ -90,6 +92,14 @@ class DriverInformation extends Component {
         this.setState({ [e.target.name]: e.target.value })
 
     }
+    handleChanges = (e) => {
+
+        this.setState({ [e.target.name]: e.target.value })
+        // this.props.updateTestData({ [e.target.name]: e.target.value })
+
+    }
+
+
     DriverTest = (e) => {
         e.preventDefault();
         if (window.confirm("are you sure you want Start Test!")) {
@@ -146,17 +156,17 @@ class DriverInformation extends Component {
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail4">First name</label>
-                                        <input type="text" class="form-control" name="firstName" value={this.state.firstName} onChange={this.handleChange} placeholder="First Name" required />
+                                        <input type="text" class="form-control" name="firstName" value={this.state.firstName} onChange={this.handleChanges} placeholder="First Name" required />
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputPassword4">Last Name</label>
-                                        <input type="text" class="form-control" name="lastName" value={this.state.lastName} onChange={this.handleChange} placeholder="Last Name" required />
+                                        <input type="text" class="form-control" name="lastName" value={this.state.lastName} onChange={this.handleChanges} placeholder="Last Name" required />
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputAddress">License Number</label>
-                                        <input type="text" class="form-control" name="licenseNumber" id="lic_num" value={this.state.licenseNumber} onChange={this.handleChange} placeholder="License Number" required />
+                                        <input type="text" class="form-control" name="licenseNumber" disabled id="lic_num" value={this.state.licenseNumber} onChange={this.handleChange} placeholder="License Number" required />
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail4">Email</label>
@@ -228,15 +238,15 @@ class DriverInformation extends Component {
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputZip"  > Test Starting Time</label>
-                                        <input type="time" class="form-control" name="startTime" onChange={this.handleChange} placeholder="Test Start Time" required />
+                                        <input type="time" class="form-control" name="startTime" onChange={this.handleChanges} placeholder="Test Start Time" required />
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputZip">Start Odometer</label>
-                                        <input type="number" class="form-control" name="startOdometer" onChange={this.handleChange} placeholder="Start Odometer Reading" required />
+                                        <input type="number" class="form-control" name="startOdometer" onChange={this.handleChanges} placeholder="Start Odometer Reading" required />
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="inputZip">Start Location</label>
-                                        <input type="text" class="form-control" name="startLoction" onChange={this.handleChange} placeholder="Start Location" required />
+                                        <input type="text" class="form-control" name="startLoction" onChange={this.handleChanges} placeholder="Start Location" required />
                                     </div>
                                     <div class="form-group col-md-12">
 
@@ -257,7 +267,17 @@ class DriverInformation extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        formData: state.formData
+    }
+}
 
+const mapDispatchToProps = dispatch => {
+    return {
+        updateData: (data) => dispatch(updateTestData(data)),
+    }
+}
 
-export default DriverInformation;
+export default connect(mapStateToProps, mapDispatchToProps)(DriverInformation);
 

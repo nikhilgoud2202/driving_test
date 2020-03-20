@@ -10,6 +10,8 @@ import {
 } from 'reactstrap';
 import { render } from 'react-dom';
 import Header from '../Header';
+import { connect } from "react-redux";
+import { updateTestData } from "../redux/actions/index"
 
 class DriverLogin extends Component {
     constructor(props) {
@@ -36,6 +38,7 @@ class DriverLogin extends Component {
     handleChange = (e) => {
 
         this.setState({ [e.target.name]: e.target.value })
+        // this.props.updateTestData({ [e.target.name]: e.target.value })
 
     }
 
@@ -117,4 +120,16 @@ class DriverLogin extends Component {
         )
     }
 }
-export default DriverLogin;
+const mapStateToProps = state => {
+    return {
+        formData: state.formData
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        updateData: (data) => dispatch(updateTestData(data)),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DriverLogin);

@@ -17,8 +17,8 @@ import FormInput from '../components/FormInput/FormInput';
 import { Dispatch, AnyAction } from "redux";
 import axios from 'axios';
 import { connect } from "react-redux";
-import { updateData } from "../redux/actions/index"
-import { clearData } from "../redux/actions/index"
+import { updateData, updateTestData, clearData } from "../redux/actions/index"
+
 
 
 
@@ -77,13 +77,16 @@ class Miscellaneous extends Component {
 
         e.preventDefault();
         if (window.confirm("are you sure you completed all Tests!")) {
-            let licenseNumber = this.state.licenseNumber;
+            let license = localStorage.getItem("lic_ID");
             let startTime = localStorage.getItem("start_time")
             console.log(this.props.formData)
+            console.log(license)
             let answerData = {
-                licenseNumber: licenseNumber,
+                licenseNumber: license,
                 answers: this.props.formData
+
             }
+            console.log("data", answerData)
             axios.post("https://drivingtest.herokuapp.com/addAnswers",
                 answerData
             )
@@ -91,6 +94,7 @@ class Miscellaneous extends Component {
                     resp => {
                         localStorage.removeItem("start_time");
                         localStorage.setItem("startTime", startTime)
+                        // this.props.updateTestData({ "final": "final" })
                         this.props.history.push('/end-test');
                     })
 
@@ -281,12 +285,11 @@ class Miscellaneous extends Component {
                             </FormGroup>
                         </CardBody>
                         <div style={{ paddingBottom: 30 }}>
-                            <Button color="primary" className="btn-pill pull-left" onClick={previousPage} style={{ marginLeft: '70px' }}>
+                            <Button color="primary" className="btn-pill pull-left" onClick={previousPage} style={{ marginLeft: '20px' }}>
                                 <i className="fa fa-chevron-left" />
                                 &nbsp; Previous
                             </Button>
-                            <Button color="primary" className="btn-pill pull-right" onClick={this.handleSubmit.bind(this)} style={{ marginRight: '70px' }}>
-                                Submit Test &nbsp; <i className="fa fa-chevron-right" />
+                            <Button color="primary" className="btn-pill pull-right" onClick={this.handleSubmit.bind(this)} style={{ marginRight: '20px' }}>Submit<i className="fa fa-chevron-right" />
                             </Button>
                         </div>
                     </Card>
@@ -306,14 +309,14 @@ Miscellaneous.propTypes = {
 
 const mapStateToProps = state => {
     return {
-        formData: state.formData
+        formData: state.formData.answers
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         updateData: (data) => dispatch(updateData(data)),
-        clearData: (data) => dispatch(clearData(data)),
+        updateTestData: (data) => dispatch(updateTestData(data))
     }
 }
 

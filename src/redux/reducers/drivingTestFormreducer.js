@@ -2,7 +2,8 @@ import * as types from './ActionTypes'
 import { render } from 'react-dom'
 
 const initialState = {
-
+  answers: {},
+  local: {}
 }
 
 const drivingTestFormreducer = (state = initialState, action) => {
@@ -10,16 +11,18 @@ const drivingTestFormreducer = (state = initialState, action) => {
     case types.UPDATE_DATA:
       return {
         ...state,
-        ...action.data
+        answers: {
+          ...action.data
+        }
       }
     case types.CLEAR_DATA: {
       return {
-        ...state,
+        ...initialState()
 
       }
     }
 
-    case types.UPDATE_PARKING_DATA:
+    case types.UPDATE_TEST_DATA:
       return {
         ...state,
 

@@ -71,9 +71,20 @@ class Form extends Component {
         <Header show={false} />
         <Card>
 
+
           <div class="form-row">
             <div class="form-group col-md-sm-12">
               <Stepper class="form-control" steps={steps} activeStep={page} /></div></div>
+          {/* <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown button
+  </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div> */}
           {page === 0 && <PreTripInspection handleSubmit={this.nextPage} />}
           {page === 1 && (
             <Coupling

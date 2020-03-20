@@ -713,7 +713,7 @@ Passingturning.propTypes = {
 
 const mapStateToProps = state => {
     return {
-        formData: state.formData
+        formData: state.formData.answers
     }
 }
 

@@ -12,16 +12,20 @@ import {
 import { render } from 'react-dom';
 import './endstyle.css';
 import Header from '../Header';
+import { connect } from "react-redux";
+import { updateData, clearData } from "../redux/actions/index"
 
 
 class Endtest extends Component {
     constructor(props) {
         super(props)
+        var total = parseFloat(this.props.formData.P7_total_Sc + this.props.formData.P7_total_Sc + this.props.formData.P7_total_Sc + this.props.formData.P7_total_Sc + this.props.formData.P7_total_Sc + this.props.formData.P7_total_Sc + this.props.formData.P7_total_Sc)
 
         this.state = {
             sign2: {},
             sign1: {},
-            totalPoints: '',
+
+            totalPoints: parseFloat(total),
             endLocation: '',
             endOdometer: '',
             endTime: '',
@@ -31,7 +35,9 @@ class Endtest extends Component {
             qualified: '',
             sign1trimmedDataURL: null,
             sign2trimmedDataURL: null,
-            tres: {}
+            tres: {},
+            driverInfo: {},
+            answers: {}
 
 
         }
@@ -50,6 +56,28 @@ class Endtest extends Component {
         else if (localStorage.start_time) {
             this.props.history.push("/start-test");
         }
+        let licenseNumber = localStorage.getItem("lic_ID");
+        axios.post("https://drivingtest.herokuapp.com/getDriverDetails", {
+            licenseNumber
+        })
+            .then(
+                resp => {
+                    console.log("driverinfo", resp.data)
+
+                    this.setState({ driverInfo: resp.data })
+
+                })
+        axios.post("https://drivingtest.herokuapp.com/getAnswers", {
+            licenseNumber
+        })
+            .then(
+                ans => {
+                    console.log("Answers", ans.data)
+
+                    this.setState({ answers: ans.data })
+
+                })
+
     }
     Signone = () => {
         this.sign1.clear()
@@ -57,9 +85,15 @@ class Endtest extends Component {
     Signtwo = () => {
         this.sign2.clear()
     }
-    trim = () => {
+    imageChange = (e) => {
         this.setState({
-            sign2trimmedDataURL: this.sigPad.getTrimmedCanvas()
+            sign2trimmedDataURL: this.sign2.getTrimmedCanvas()
+                .toDataURL('image/png')
+        })
+    }
+    imageChanges = (e) => {
+        this.setState({
+            sign1trimmedDataURL: this.sign1.getTrimmedCanvas()
                 .toDataURL('image/png')
         })
     }
@@ -87,14 +121,26 @@ class Endtest extends Component {
                     resp => {
 
                         console.log(resp.data)
-                        localStorage.removeItem("firstname");
-                        localStorage.removeItem("startOdmtr");
-                        localStorage.removeItem("startLoc");
-                        localStorage.removeItem("startTime");
-                        localStorage.removeItem("lastname");
-                        localStorage.removeItem("lic_ID");
-                        this.props.history.push("/driverlogin");
-
+                        var pdf = {
+                            DriverInfo: this.state.driverInfo,
+                            answers: this.state.answers,
+                            testInfo: resp.data
+                        }
+                        axios.post("https://drivingtest.herokuapp.com/sendpdf",
+                            pdf
+                        )
+                            .then(
+                                pdff => {
+                                    console.log(pdff.data)
+                                    // this.props.clearData();
+                                    localStorage.removeItem("firstname");
+                                    localStorage.removeItem("startOdmtr");
+                                    localStorage.removeItem("startLoc");
+                                    localStorage.removeItem("startTime");
+                                    localStorage.removeItem("lastname");
+                                    localStorage.removeItem("lic_ID");
+                                    this.props.history.push("/driverlogin");
+                                })
                     })
         }
     }
@@ -117,7 +163,7 @@ class Endtest extends Component {
 
 
     render() {
-
+        console.log(this.state.sign2trimmedDataURL)
         return (
             <div>
                 <Header show={true} />
@@ -145,11 +191,11 @@ class Endtest extends Component {
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="inputZip">Total Kilometers Driven</label>
-                                        <input type="number" class="form-control" disabled value={this.state.totalKm} onChange={this.handleChange} name="totalKm" placeholder="Total Kilometers Driven" required />
+                                        <input type="number" class="form-control" disabled value={this.state.totalKm} name="totalKm" placeholder="Total Kilometers Driven" required />
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="inputZip">Total Points</label>
-                                        <input type="number" class="form-control" onChange={this.handleChange} name="totalPoints" placeholder=" Total Points" required />
+                                        <input type="number" class="form-control" value={this.state.totalPoints} disabled name="totalPoints" placeholder=" Total Points" required />
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="inputZip">Qualified</label>
@@ -171,7 +217,7 @@ class Endtest extends Component {
                                     <div class="form-group col-md-6">
                                         <label for="exampleFormControlTextarea1">Examiner Signature:</label>
                                         <SignatureCanvas penColor='green'
-                                            ref={(ref) => { this.sign1 = ref }} canvasProps={{ width: 300, height: 100, className: 'sigCanvas' }} />
+                                            onChange={this.imageChanges} ref={(ref) => { this.sign1 = ref }} canvasProps={{ width: 300, height: 100, className: 'sigCanvas' }} />
                                     </div>
                                     <div class="form-group col-md-6 sign-btn">
                                         <a class="btn btn-primary  pull-center" onClick={this.Signone}>Clear Signature</a>
@@ -184,7 +230,7 @@ class Endtest extends Component {
                                     <div class="form-group col-md-6">
                                         <label for="exampleFormControlTextarea1">Driver Signature:</label>
                                         <SignatureCanvas penColor='green'
-                                            ref={(ref) => { this.sign2 = ref }} canvasProps={{ width: 300, height: 100, className: 'sigCanvas' }} />
+                                            onChange={this.imageChange} ref={(ref) => { this.sign2 = ref }} canvasProps={{ width: 300, height: 100, className: 'sigCanvas' }} />
                                     </div>
 
                                     <div class="form-group col-md-6 sign-btn">
@@ -218,4 +264,16 @@ class Endtest extends Component {
         )
     }
 }
-export default Endtest;
+const mapStateToProps = state => {
+    return {
+        formData: state.formData
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        updateData: (data) => dispatch(updateData(data)),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Endtest);

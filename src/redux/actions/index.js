@@ -9,8 +9,8 @@ const clearData = (data) => ({
   data
 })
 
-const updateParkingData = (data) => ({
-  type: types.UPDATE_PARKING_DATA,
+const updateTestData = (data) => ({
+  type: types.UPDATE_TEST_DATA,
   data
 })
 const storingData = (data) => ({
@@ -22,4 +22,4 @@ const clearStoringData = (data) => ({
   data
 })
 
-export { updateData, clearData }
+export { updateData, clearData, updateTestData }
