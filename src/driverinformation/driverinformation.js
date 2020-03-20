@@ -37,36 +37,42 @@ class DriverInformation extends Component {
         }
     }
     componentDidMount() {
+        const { licenseNumber, firstName, lastName, startTime } = this.props && this.props.localData;
         if (!localStorage.userID) {
             this.props.history.push("/");
         }
-        else if (localStorage.start_time) {
+        else if(!licenseNumber){
+            this.props.history.push("/driverlogin");
+        }
+        else if (startTime) {
             this.props.history.push("/start-test");
         }
-        const { licenseNumber, firstName, lastName } = this.props && this.props.localData;
         axios.post("https://drivingtest.herokuapp.com/getDriverDetails", {
             licenseNumber
         })
             .then(
                 resp => {
                     if (resp.data) {
-                        this.setState({ firstName: resp.data.firstName })
-                        this.setState({ lastName: resp.data.lastName })
-                        this.setState({ licenseNumber: resp.data.licenseNumber })
-                        this.setState({ email: resp.data.email })
-                        this.setState({ expiryDate: new Date(resp.data.expiryDate) })
-                        this.setState({ classType: resp.data.classType })
-                        this.setState({ companyName: resp.data.companyName })
-                        this.setState({ address: resp.data.address })
-                        this.setState({ tractor: resp.data.tractor })
-                        this.setState({ tractorPlate: resp.data.tractorPlate })
-                        this.setState({ triler: resp.data.triler })
-                        this.setState({ trilerPlate: resp.data.trilerPlate })
-                        this.setState({ truckType: resp.data.truckType })
+                        this.setState({
+                            firstName: firstName,
+                            lastName: lastName,
+                            licenseNumber: licenseNumber,
+                            email: resp.data.email,
+                            classType: resp.data.classType,
+                            address: resp.data.address,
+                            tractor: resp.data.tractor,
+                            tractorPlate: resp.data.tractorPlate,
+                            triler: resp.data.triler,
+                            trilerPlate: resp.data.trilerPlate,
+                            truckType: resp.data.truckType
+
+                        })
                     } else {
-                        this.setState({ licenseNumber: licenseNumber })
-                        this.setState({ firstName: firstName })
-                        this.setState({ lastName: lastName })
+                        this.setState({
+                            firstName: firstName,
+                            lastName: lastName,
+                            licenseNumber: licenseNumber
+                        })
                     }
                 })
 

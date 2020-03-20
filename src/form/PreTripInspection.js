@@ -29,9 +29,6 @@ class PreTripInspection extends Component {
         }
     }
 
-    componentDidMount() {
-        console.log(this.props)
-    }
     handleChangeText = (e) => {
         this.props.updateData({ [e.target.name]: e.target.value })  
     }
@@ -56,7 +53,6 @@ class PreTripInspection extends Component {
     }
     render() {
         const { handleSubmit, pristine, previousPage, submitting, formData } = this.props;
-        console.log("formData ======>", formData)
         return (
             <form>
                 <Col sm="12">

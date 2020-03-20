@@ -13,6 +13,7 @@ import MISCELLANEOUS from './Miscellaneous'
 import './formstyle.css'
 import { withRouter } from 'react-router-dom';
 import Header from '../Header';
+import { connect } from "react-redux";
 
 class Form extends Component {
 
@@ -36,17 +37,14 @@ class Form extends Component {
 
   }
   componentDidMount() {
-
-
-
+    const { licenseNumber, startTime} = this.props.localData;
     if (!localStorage.userID) {
       this.props.history.push("/");
     }
-    else if (!localStorage.lic_ID) {
+    else if (!licenseNumber) {
       this.props.history.push("/driverlogin");
-    }
-    else if (!localStorage.start_time) {
-      this.props.history.push("/driverlogin");
+    } else if (!startTime) {
+      this.props.history.push("/driverinfo");
     }
   }
   nextPage() {
@@ -71,7 +69,6 @@ class Form extends Component {
 
     const { onSubmit } = this.props;
     const { page, steps } = this.state;
-    console.log("STATE", this.state)
 
     return (
       <div>
@@ -148,5 +145,11 @@ Form.propTypes = {
   onSubmit: PropTypes.func
 };
 
-export default Form;
+const mapStateToProps = state => {
+  return {
+      localData: state.localData
+  }
+}
+
+export default connect(mapStateToProps)(Form);
 

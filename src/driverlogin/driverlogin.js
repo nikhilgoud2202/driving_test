@@ -52,15 +52,15 @@ class DriverLogin extends Component {
                     if (resp.data) {
                         this.props.updateData({
                             licenseNumber: this.state.licenseNumber,
-                            firstname: this.state.firstName,
-                            lastname: this.state.lastName
+                            firstName: this.state.firstName,
+                            lastName: this.state.lastName
                         })
                         this.props.history.push("/driverinfo");
                     } else {
                         this.props.updateData({
                             licenseNumber: this.state.licenseNumber,
-                            firstname: this.state.firstName,
-                            lastname: this.state.lastName
+                            firstName: this.state.firstName,
+                            lastName: this.state.lastName
                         })
                         this.props.history.push("/driverinfo");
                     }

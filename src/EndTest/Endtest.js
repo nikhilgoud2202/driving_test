@@ -44,19 +44,15 @@ class Endtest extends Component {
     }
 
     componentDidMount() {
-
-
-
+        const { licenseNumber, startTime, testCompleted } = this.props.localData;
         if (!localStorage.userID) {
             this.props.history.push("/");
         }
-        else if (!localStorage.lic_ID) {
+        else if (!licenseNumber) {
             this.props.history.push("/driverlogin");
-        }
-        else if (localStorage.start_time) {
+        } else if (!testCompleted) {
             this.props.history.push("/start-test");
         }
-        const { licenseNumber } = this.props.localData;
         axios.post("https://drivingtest.herokuapp.com/getDriverDetails", {
             licenseNumber
         })
@@ -108,7 +104,10 @@ class Endtest extends Component {
                 qualified: this.state.qualified,
                 endLocation: this.state.endLocation,
                 examinerComments: this.state.examinerComment,
-                driverComments: this.state.driverComment
+                driverComments: this.state.driverComment,
+                examinerSigniture: this.sign1.getTrimmedCanvas().toDataURL('image/png'),
+                driverSigniture: this.sign2.getTrimmedCanvas().toDataURL('image/png'),
+
             }
             axios.post("https://drivingtest.herokuapp.com/addTestInformation",
                 end_data
@@ -213,7 +212,7 @@ class Endtest extends Component {
                                     <div class="form-group col-md-6">
                                         <label for="exampleFormControlTextarea1">Examiner Signature:</label>
                                         <SignatureCanvas penColor='green'
-                                            onChange={this.imageChanges} ref={(ref) => { this.sign1 = ref }} canvasProps={{ width: 300, height: 100, className: 'sigCanvas' }} />
+                                            ref={(ref) => { this.sign1 = ref }} canvasProps={{ width: 300, height: 100, className: 'sigCanvas' }} />
                                     </div>
                                     <div class="form-group col-md-6 sign-btn">
                                         <a class="btn btn-primary  pull-center" onClick={this.Signone}>Clear Signature</a>
@@ -226,7 +225,7 @@ class Endtest extends Component {
                                     <div class="form-group col-md-6">
                                         <label for="exampleFormControlTextarea1">Driver Signature:</label>
                                         <SignatureCanvas penColor='green'
-                                            onChange={this.imageChange} ref={(ref) => { this.sign2 = ref }} canvasProps={{ width: 300, height: 100, className: 'sigCanvas' }} />
+                                             ref={(ref) => { this.sign2 = ref }} canvasProps={{ width: 300, height: 100, className: 'sigCanvas' }} />
                                     </div>
 
                                     <div class="form-group col-md-6 sign-btn">
