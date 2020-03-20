@@ -24,68 +24,6 @@ class Passingturning extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            P6_A_Q1_Se: '',
-            P6_A_Q1_Sc: '',
-            P6_A_Q2_Se: '',
-            P6_A_Q2_Sc: '',
-            P6_A_Q3_Se: '',
-            P6_A_Q3_Sc: '',
-            P6_A_Q4_Se: '',
-            P6_A_Q4_Sc: '',
-            P6_A_Q5_Se: '',
-            P6_A_Q5_Sc: '',
-            P6_A_Com: '',
-            P6_B_Q1_Se: '',
-            P6_B_Q1_Sc: '',
-            P6_B_Q2_Se: '',
-            P6_B_Q2_Sc: '',
-            P6_B_Q3_Se: '',
-            P6_B_Q3_Sc: '',
-            P6_B_Q4_Se: '',
-            P6_B_Q4_Sc: '',
-            P6_B_Q5_Se: '',
-            P6_B_Q5_Sc: '',
-            P6_B_Com: '',
-            P6_C_Q1_Se: '',
-            P6_C_Q1_Sc: '',
-            P6_C_Q2_Se: '',
-            P6_C_Q2_Sc: '',
-            P6_C_Q3_Se: '',
-            P6_C_Q3_Sc: '',
-            P6_C_Com: '',
-            P6_D_Q1_Se: '',
-            P6_D_Q1_Sc: '',
-            P6_D_Q2_Se: '',
-            P6_D_Q2_Sc: '',
-            P6_D_Q3_Se: '',
-            P6_D_Q3_Sc: '',
-            P6_D_Q4_Se: '',
-            P6_D_Q4_Sc: '',
-            P6_D_Com: '',
-            P6_E_Q1_Se: '',
-            P6_E_Q1_Sc: '',
-            P6_E_Q2_Se: '',
-            P6_E_Q2_Sc: '',
-            P6_E_Q3_Se: '',
-            P6_E_Q3_Sc: '',
-            P6_E_Q4_Se: '',
-            P6_E_Q4_Sc: '',
-            P6_E_Q5_Se: '',
-            P6_E_Q5_Sc: '',
-            P6_E_Q6_Se: '',
-            P6_E_Q6_Sc: '',
-            P6_E_Com: '',
-            P6_F_Q1_Se: '',
-            P6_F_Q1_Sc: '',
-            P6_F_Q2_Se: '',
-            P6_F_Q2_Sc: '',
-            P6_F_Q3_Se: '',
-            P6_F_Q3_Sc: '',
-            P6_F_Q4_Se: '',
-            P6_F_Q4_Sc: '',
-            P6_F_Q5_Se: '',
-            P6_F_Q5_Sc: '',
-            P6_F_Com: '',
             P6_total_Sc: '',
             tres: {}
         }
@@ -713,7 +651,7 @@ Passingturning.propTypes = {
 
 const mapStateToProps = state => {
     return {
-        formData: state.formData.answers
+        formData: state.formData
     }
 }
 

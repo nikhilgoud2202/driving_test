@@ -24,23 +24,6 @@ class Couplingandcoupling extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            P2_Q1_Se: '',
-            P2_Q1_Sc: '',
-            P2_Q2_Se: '',
-            P2_Q2_Sc: '',
-            P2_Q3_Se: '',
-            P2_Q3_Sc: '',
-            P2_Q2_Se: '',
-            P2_Q2_Sc: '',
-            P2_Q5_Se: '',
-            P2_Q5_Sc: '',
-            P2_Q6_Se: '',
-            P2_Q6_Sc: '',
-            P2_Q7_Se: '',
-            P2_Q7_Sc: '',
-            P2_Q8_Se: '',
-            P2_Q8_Sc: '',
-            P2_Com: '',
             P2_total_Sc: '',
             tres: {}
         }
@@ -252,7 +235,7 @@ Couplingandcoupling.propTypes = {
 
 const mapStateToProps = state => {
     return {
-        formData: state.formData.answers
+        formData: state.formData
     }
 }
 

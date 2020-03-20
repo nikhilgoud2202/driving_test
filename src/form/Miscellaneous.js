@@ -17,7 +17,7 @@ import FormInput from '../components/FormInput/FormInput';
 import { Dispatch, AnyAction } from "redux";
 import axios from 'axios';
 import { connect } from "react-redux";
-import { updateData, updateTestData, clearData } from "../redux/actions/index"
+import { updateData, updateTestData, testCompleted } from "../redux/actions/index"
 
 
 
@@ -28,21 +28,6 @@ class Miscellaneous extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            P7_Q1_Se: '',
-            P7_Q1_Sc: '',
-            P7_Q7_Se: '',
-            P7_Q7_Sc: '',
-            P7_Q3_Se: '',
-            P7_Q3_Sc: '',
-            P7_Q7_Se: '',
-            P7_Q7_Sc: '',
-            P7_Q5_Se: '',
-            P7_Q5_Sc: '',
-            P7_Q6_Se: '',
-            P7_Q6_Sc: '',
-            P7_Q7_Se: '',
-            P7_Q7_Sc: '',
-            P7_Com: '',
             P7_total_Sc: '',
             tres: {}
         }
@@ -76,25 +61,19 @@ class Miscellaneous extends Component {
     handleSubmit = (e) => {
 
         e.preventDefault();
+        const { licenseNumber } = this.props.localData;
         if (window.confirm("are you sure you completed all Tests!")) {
-            let license = localStorage.getItem("lic_ID");
-            let startTime = localStorage.getItem("start_time")
-            console.log(this.props.formData)
-            console.log(license)
             let answerData = {
-                licenseNumber: license,
+                licenseNumber: licenseNumber,
                 answers: this.props.formData
 
             }
-            console.log("data", answerData)
             axios.post("https://drivingtest.herokuapp.com/addAnswers",
                 answerData
             )
                 .then(
                     resp => {
-                        localStorage.removeItem("start_time");
-                        localStorage.setItem("startTime", startTime)
-                        // this.props.updateTestData({ "final": "final" })
+                        this.props.testCompleted(true);
                         this.props.history.push('/end-test');
                     })
 
@@ -309,14 +288,16 @@ Miscellaneous.propTypes = {
 
 const mapStateToProps = state => {
     return {
-        formData: state.formData.answers
+        formData: state.formData,
+        localData: state.localData
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         updateData: (data) => dispatch(updateData(data)),
-        updateTestData: (data) => dispatch(updateTestData(data))
+        updateTestData: (data) => dispatch(updateTestData(data)),
+        testCompleted: (done) => dispatch(testCompleted(done))
     }
 }
 

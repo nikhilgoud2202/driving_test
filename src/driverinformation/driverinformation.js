@@ -37,29 +37,19 @@ class DriverInformation extends Component {
         }
     }
     componentDidMount() {
-
-
-
         if (!localStorage.userID) {
             this.props.history.push("/");
-        }
-        else if (!localStorage.lic_ID) {
-            this.props.history.push("/driverlogin");
         }
         else if (localStorage.start_time) {
             this.props.history.push("/start-test");
         }
-        let licenseNumber = localStorage.getItem("lic_ID")
-
+        const { licenseNumber, firstName, lastName } = this.props && this.props.localData;
         axios.post("https://drivingtest.herokuapp.com/getDriverDetails", {
             licenseNumber
         })
             .then(
                 resp => {
-                    console.log(resp.data)
                     if (resp.data) {
-
-
                         this.setState({ firstName: resp.data.firstName })
                         this.setState({ lastName: resp.data.lastName })
                         this.setState({ licenseNumber: resp.data.licenseNumber })
@@ -73,32 +63,17 @@ class DriverInformation extends Component {
                         this.setState({ triler: resp.data.triler })
                         this.setState({ trilerPlate: resp.data.trilerPlate })
                         this.setState({ truckType: resp.data.truckType })
-
-
                     } else {
-
-                        this.setState({ licenseNumber: localStorage.getItem("lic_ID") })
-                        this.setState({ firstName: localStorage.getItem("firstname") })
-                        this.setState({ lastName: localStorage.getItem("lastname") })
-
-
+                        this.setState({ licenseNumber: licenseNumber })
+                        this.setState({ firstName: firstName })
+                        this.setState({ lastName: lastName })
                     }
-
                 })
 
     }
-    handleChange = (e) => {
 
-        this.setState({ [e.target.name]: e.target.value })
-
-    }
-    handleChanges = (e) => {
-
-        this.setState({ [e.target.name]: e.target.value })
-        // this.props.updateTestData({ [e.target.name]: e.target.value })
-
-    }
-
+    handleChange = (e) => this.setState({ [e.target.name]: e.target.value })
+    handleChanges = (e) => this.setState({ [e.target.name]: e.target.value })
 
     DriverTest = (e) => {
         e.preventDefault();
@@ -125,10 +100,11 @@ class DriverInformation extends Component {
             )
                 .then(
                     resp => {
-                        console.log(resp.data)
-                        localStorage.setItem("start_time", this.state.startTime);
-                        localStorage.setItem("startOdmtr", this.state.startOdometer)
-                        localStorage.setItem("startLoc", this.state.startLoction)
+                        this.props.updateData({
+                            startTime: this.state.startTime,
+                            startOdometer: this.state.startOdometer,
+                            startLoction: this.state.startLoction,
+                        })
                         this.props.history.push("/start-test");
                     })
 
@@ -232,9 +208,6 @@ class DriverInformation extends Component {
 
                                     <h4 class="panel-title">Start Test Information:</h4>
                                 </header>
-
-
-
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputZip"  > Test Starting Time</label>
@@ -249,15 +222,9 @@ class DriverInformation extends Component {
                                         <input type="text" class="form-control" name="startLoction" onChange={this.handleChanges} placeholder="Start Location" required />
                                     </div>
                                     <div class="form-group col-md-12">
-
                                         <button type="submit" class="btn btn-primary  pull-right">Start Test</button>
-
-
                                     </div>
                                 </div>
-
-
-
                             </form>
                         </CardBody>
                     </Card>
@@ -269,7 +236,7 @@ class DriverInformation extends Component {
 
 const mapStateToProps = state => {
     return {
-        formData: state.formData
+        localData: state.localData
     }
 }
 

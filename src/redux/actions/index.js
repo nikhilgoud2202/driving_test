@@ -13,13 +13,10 @@ const updateTestData = (data) => ({
   type: types.UPDATE_TEST_DATA,
   data
 })
-const storingData = (data) => ({
-  type: types.STORING_DATA,
-  data
-})
-const clearStoringData = (data) => ({
-  type: types.CLEAR_STORING_DATA,
-  data
+
+const testCompleted = (testCompleted) => ({
+  type: types.TEST_COMPLETED,
+  testCompleted
 })
 
-export { updateData, clearData, updateTestData }
+export { updateData, clearData, updateTestData, testCompleted }

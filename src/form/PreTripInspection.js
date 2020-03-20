@@ -24,24 +24,7 @@ class PreTripInspection extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            P1_Q1_Se: null,
-            P1_Q1_Sc: null,
-            P1_Q2_Se: null,
-            P1_Q2_Sc: null,
-            P1_Q3_Se: null,
-            P1_Q3_Sc: null,
-            P1_Q2_Se: null,
-            P1_Q2_Sc: null,
-            P1_Q5_Se: null,
-            P1_Q5_Sc: null,
-            P1_Q6_Se: null,
-            P1_Q6_Sc: null,
-            P1_Q7_Se: null,
-            P1_Q7_Sc: null,
-            P1_Q8_Se: null,
-            P1_Q8_Sc: null,
-            P1_Com: '',
-            P1_total_Sc: null,
+            P1_total_Sc: 0,
             tres: {}
         }
     }
@@ -50,7 +33,7 @@ class PreTripInspection extends Component {
         console.log(this.props)
     }
     handleChangeText = (e) => {
-        this.props.updateData({ [e.target.name]: e.target.value })
+        this.props.updateData({ [e.target.name]: e.target.value })  
     }
 
     handleChange = (e) => {
@@ -73,6 +56,7 @@ class PreTripInspection extends Component {
     }
     render() {
         const { handleSubmit, pristine, previousPage, submitting, formData } = this.props;
+        console.log("formData ======>", formData)
         return (
             <form>
                 <Col sm="12">
@@ -251,7 +235,7 @@ PreTripInspection.propTypes = {
 
 const mapStateToProps = state => {
     return {
-        formData: state.formData.answers
+        formData: state.formData
     }
 }
 

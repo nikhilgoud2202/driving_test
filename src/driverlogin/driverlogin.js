@@ -36,10 +36,7 @@ class DriverLogin extends Component {
         }
     }
     handleChange = (e) => {
-
         this.setState({ [e.target.name]: e.target.value })
-        // this.props.updateTestData({ [e.target.name]: e.target.value })
-
     }
 
 
@@ -52,17 +49,19 @@ class DriverLogin extends Component {
         )
             .then(
                 resp => {
-
-                    console.log(resp)
                     if (resp.data) {
-                        localStorage.setItem("lic_ID", resp.data.licenseNumber);
-                        localStorage.setItem("firstname", resp.data.firstName)
-                        localStorage.setItem("lastname", resp.data.lastName)
+                        this.props.updateData({
+                            licenseNumber: this.state.licenseNumber,
+                            firstname: this.state.firstName,
+                            lastname: this.state.lastName
+                        })
                         this.props.history.push("/driverinfo");
                     } else {
-                        localStorage.setItem("lic_ID", this.state.licenseNumber);
-                        localStorage.setItem("firstname", this.state.firstName)
-                        localStorage.setItem("lastname", this.state.lastName)
+                        this.props.updateData({
+                            licenseNumber: this.state.licenseNumber,
+                            firstname: this.state.firstName,
+                            lastname: this.state.lastName
+                        })
                         this.props.history.push("/driverinfo");
                     }
                 })

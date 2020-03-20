@@ -61,10 +61,17 @@ class Form extends Component {
     this.props.history.push('/end-test');
   }
 
+  handlePage = (e) => {
+    this.setState({
+      page: +e.target.value
+    })
+  }
+
   render() {
 
     const { onSubmit } = this.props;
     const { page, steps } = this.state;
+    console.log("STATE", this.state)
 
     return (
       <div>
@@ -74,17 +81,22 @@ class Form extends Component {
 
           <div class="form-row">
             <div class="form-group col-md-sm-12">
-              <Stepper class="form-control" steps={steps} activeStep={page} /></div></div>
-          {/* <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown button
-  </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <Stepper class="form-control" steps={steps} activeStep={page} /></div>
+          </div>
+          <div className="w-100">
+            <div class="form-group col-md-4 pull-right">
+              <select class="form-control" name="P2_Q1_Se" onChange={this.handlePage} >
+                <option value="0">GO TO</option>
+                <option value="0">PRE-TRIP INSPECTION</option>
+                <option value="1">COUPLING AND UNCOUPLING</option>
+                <option value="2">PLACING VEHICLE IN MOTION AND USE OFCONTROLS</option>
+                <option value="3">BACKING AND PARKING</option>
+                <option value="4">SLOWING AND STOPPING</option>
+                <option value="5">OPERATING IN TRAFFIC: PASSING AND TURNING</option>
+                <option value="6">MISCELLANEOUS</option>
+              </select>
             </div>
-          </div> */}
+          </div>
           {page === 0 && <PreTripInspection handleSubmit={this.nextPage} />}
           {page === 1 && (
             <Coupling

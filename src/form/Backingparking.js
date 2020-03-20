@@ -24,22 +24,7 @@ class Backingparking extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            P4_Q1_Se: '',
-            P4_Q1_Sc: '',
-            P4_Q2_Se: '',
-            P4_Q2_Sc: '',
-            P4_Q3_Se: '',
-            P4_Q3_Sc: '',
-            P4_Q4_Se: '',
-            P4_Q4_Sc: '',
-            P4_Q5_Se: '',
-            P4_Q5_Sc: '',
-            P4_Q6_Se: '',
-            P4_Q6_Sc: '',
-            P4_Q7_Se: '',
-            P4_Q7_Sc: '',
-            P4_Com: '',
-            P4_total_Sc: '',
+            P4_total_Sc: 0,
             tres: {}
         }
     }
@@ -234,7 +219,7 @@ Backingparking.propTypes = {
 
 const mapStateToProps = state => {
     return {
-        formData: state.formData.answers
+        formData: state.formData
     }
 }
 

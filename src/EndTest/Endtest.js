@@ -56,24 +56,19 @@ class Endtest extends Component {
         else if (localStorage.start_time) {
             this.props.history.push("/start-test");
         }
-        let licenseNumber = localStorage.getItem("lic_ID");
+        const { licenseNumber } = this.props.localData;
         axios.post("https://drivingtest.herokuapp.com/getDriverDetails", {
             licenseNumber
         })
             .then(
                 resp => {
-                    console.log("driverinfo", resp.data)
-
                     this.setState({ driverInfo: resp.data })
-
                 })
         axios.post("https://drivingtest.herokuapp.com/getAnswers", {
             licenseNumber
         })
             .then(
                 ans => {
-                    console.log("Answers", ans.data)
-
                     this.setState({ answers: ans.data })
 
                 })
@@ -99,12 +94,13 @@ class Endtest extends Component {
     }
     EndHandler = (e) => {
         e.preventDefault();
+        const { licenseNumber, startTime, startOdometer, startLocation } = this.props.localData;
         if (window.confirm("are you sure you want end the Test!")) {
             let end_data = {
-                licenseNumber: localStorage.getItem("lic_ID"),
-                startTime: localStorage.getItem("startTime"),
-                startOdometer: localStorage.getItem("startOdmtr"),
-                startLocation: localStorage.getItem("startLoc"),
+                licenseNumber: licenseNumber,
+                startTime: startTime,
+                startOdometer: startOdometer,
+                startLocation: startLocation,
                 endTime: this.state.endTime,
                 endOdometer: this.state.endOdometer,
                 KMsDriven: this.state.totalKm,
@@ -266,7 +262,8 @@ class Endtest extends Component {
 }
 const mapStateToProps = state => {
     return {
-        formData: state.formData
+        formData: state.formData,
+        localData: state.localData
     }
 }
 

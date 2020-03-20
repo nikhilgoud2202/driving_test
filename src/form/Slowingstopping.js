@@ -24,21 +24,6 @@ class Slowingstopping extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            P5_Q1_Se: '',
-            P5_Q1_Sc: '',
-            P5_Q2_Se: '',
-            P5_Q2_Sc: '',
-            P5_Q3_Se: '',
-            P5_Q3_Sc: '',
-            P5_Q2_Se: '',
-            P5_Q2_Sc: '',
-            P5_Q5_Se: '',
-            P5_Q5_Sc: '',
-            P5_Q6_Se: '',
-            P5_Q6_Sc: '',
-            P5_Q7_Se: '',
-            P5_Q7_Sc: '',
-            P5_Com: '',
             P5_total_Sc: '',
             tres: {}
         }
@@ -234,7 +219,7 @@ Slowingstopping.propTypes = {
 
 const mapStateToProps = state => {
     return {
-        formData: state.formData.answers
+        formData: state.formData
     }
 }
 

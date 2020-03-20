@@ -25,14 +25,9 @@ class Placingmotion extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
             tres: {}
         }
 
-    }
-
-    componentDidMount() {
-        console.log(this.props)
     }
 
     handleChangeText = (e) => {
@@ -396,7 +391,7 @@ Placingmotion.propTypes = {
 
 const mapStateToProps = state => {
     return {
-        formData: state.formData.answers
+        formData: state.formData
     }
 }
 
