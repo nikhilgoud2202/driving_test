@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Field, reduxForm } from 'redux-form';
-import validate from '../validation/validation';
+
 import {
     Button,
     Card,
@@ -9,12 +8,9 @@ import {
     Col,
     FormGroup
 } from 'reactstrap';
-import {
-    captialize,
-} from '../validation/normalize';
-import Select from '../components/FormInput/FormSelect';
-import FormInput from '../components/FormInput/FormInput';
-import { Dispatch, AnyAction } from "redux";
+
+
+
 import axios from 'axios';
 import { connect } from "react-redux";
 import { updateData, updateTestData, testCompleted } from "../redux/actions/index"
@@ -28,7 +24,7 @@ class Miscellaneous extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            P7_total_Sc: '',
+            P7_total_Sc: 0,
             tres: {}
         }
     }

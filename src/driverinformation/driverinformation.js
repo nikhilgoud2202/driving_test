@@ -7,7 +7,7 @@ import {
     Col,
     FormGroup
 } from 'reactstrap';
-import { render } from 'react-dom';
+
 import Header from '../Header';
 import { connect } from "react-redux";
 import { updateTestData, clearData } from "../redux/actions/index"
@@ -41,7 +41,7 @@ class DriverInformation extends Component {
         if (!localStorage.userID) {
             this.props.history.push("/");
         }
-        else if(!licenseNumber){
+        else if (!licenseNumber) {
             this.props.history.push("/driverlogin");
         }
         else if (startTime) {
@@ -58,6 +58,7 @@ class DriverInformation extends Component {
                             lastName: lastName,
                             licenseNumber: licenseNumber,
                             email: resp.data.email,
+                            companyName: resp.data.companyName,
                             classType: resp.data.classType,
                             address: resp.data.address,
                             tractor: resp.data.tractor,

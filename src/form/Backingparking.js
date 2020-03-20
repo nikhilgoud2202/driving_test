@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
-import validate from '../validation/validation';
+
 import {
     Button,
     Card,
@@ -9,11 +9,8 @@ import {
     Col,
     FormGroup
 } from 'reactstrap';
-import {
-    captialize,
-} from '../validation/normalize';
-import Select from '../components/FormInput/FormSelect';
-import FormInput from '../components/FormInput/FormInput';
+
+
 import { Dispatch, AnyAction } from "redux";
 import { connect } from "react-redux";
 import { updateData } from "../redux/actions/index"

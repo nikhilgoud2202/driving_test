@@ -2,6 +2,13 @@ import * as types from './ActionTypes'
 import { render } from 'react-dom'
 
 const initialState = {
+  P1_total_Sc: 0,
+  P2_total_Sc: 0,
+  P3_total_Sc: 0,
+  P4_total_Sc: 0,
+  P5_total_Sc: 0,
+  P6_total_Sc: 0,
+  P7_total_Sc: 0,
 }
 
 const drivingTestFormreducer = (state = initialState, action) => {
@@ -9,7 +16,7 @@ const drivingTestFormreducer = (state = initialState, action) => {
     case types.UPDATE_DATA:
       return {
         ...state,
-          ...action.data
+        ...action.data
       }
     case types.CLEAR_DATA: {
       return {

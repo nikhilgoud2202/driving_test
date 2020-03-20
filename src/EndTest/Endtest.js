@@ -19,13 +19,13 @@ import { updateData, clearData } from "../redux/actions/index"
 class Endtest extends Component {
     constructor(props) {
         super(props)
-        var total = parseFloat(this.props.formData.P7_total_Sc + this.props.formData.P7_total_Sc + this.props.formData.P7_total_Sc + this.props.formData.P7_total_Sc + this.props.formData.P7_total_Sc + this.props.formData.P7_total_Sc + this.props.formData.P7_total_Sc)
-
+        var total = parseFloat(this.props.formData.P1_total_Sc + this.props.formData.P2_total_Sc + this.props.formData.P3_total_Sc + this.props.formData.P4_total_Sc + this.props.formData.P5_total_Sc + this.props.formData.P6_total_Sc + this.props.formData.P7_total_Sc)
+        console.log(total)
         this.state = {
             sign2: {},
             sign1: {},
 
-            totalPoints: parseFloat(total),
+            totalPoints: total,
             endLocation: '',
             endOdometer: '',
             endTime: '',
@@ -76,18 +76,7 @@ class Endtest extends Component {
     Signtwo = () => {
         this.sign2.clear()
     }
-    imageChange = (e) => {
-        this.setState({
-            sign2trimmedDataURL: this.sign2.getTrimmedCanvas()
-                .toDataURL('image/png')
-        })
-    }
-    imageChanges = (e) => {
-        this.setState({
-            sign1trimmedDataURL: this.sign1.getTrimmedCanvas()
-                .toDataURL('image/png')
-        })
-    }
+
     EndHandler = (e) => {
         e.preventDefault();
         const { licenseNumber, startTime, startOdometer, startLocation } = this.props.localData;
@@ -103,10 +92,11 @@ class Endtest extends Component {
                 totalPoints: this.state.totalPoints,
                 qualified: this.state.qualified,
                 endLocation: this.state.endLocation,
+                examinerSignature: this.sign1.getTrimmedCanvas().toDataURL('image/png'),
+                driverSignature: this.sign2.getTrimmedCanvas().toDataURL('image/png'),
                 examinerComments: this.state.examinerComment,
-                driverComments: this.state.driverComment,
-                examinerSigniture: this.sign1.getTrimmedCanvas().toDataURL('image/png'),
-                driverSigniture: this.sign2.getTrimmedCanvas().toDataURL('image/png'),
+                driverComments: this.state.driverComment
+
 
             }
             axios.post("https://drivingtest.herokuapp.com/addTestInformation",
@@ -121,21 +111,17 @@ class Endtest extends Component {
                             answers: this.state.answers,
                             testInfo: resp.data
                         }
-                        axios.post("https://drivingtest.herokuapp.com/sendpdf",
-                            pdf
-                        )
-                            .then(
-                                pdff => {
-                                    console.log(pdff.data)
-                                    // this.props.clearData();
-                                    localStorage.removeItem("firstname");
-                                    localStorage.removeItem("startOdmtr");
-                                    localStorage.removeItem("startLoc");
-                                    localStorage.removeItem("startTime");
-                                    localStorage.removeItem("lastname");
-                                    localStorage.removeItem("lic_ID");
-                                    this.props.history.push("/driverlogin");
-                                })
+                        this.props.history.push("/driverlogin");
+                        // axios.post("https://drivingtest.herokuapp.com/sendpdf",
+                        //     pdf
+                        // )
+                        //     .then(
+                        //         pdff => {
+                        //             console.log(pdff.data)
+                        //             this.props.clearData();
+
+                        //             this.props.history.push("/driverlogin");
+                        //         })
                     })
         }
     }
@@ -146,11 +132,10 @@ class Endtest extends Component {
     }
     handleChanges = (e) => {
 
+        const { startOdometer } = this.props.localData;
         this.setState({ [e.target.name]: e.target.value })
         this.state.tres[e.target.name] = parseFloat(e.target.value);
-        var startOdmtr = localStorage.getItem("startOdmtr")
-        console.log(startOdmtr)
-        var res = parseFloat(this.state.tres["endOdometer"] - startOdmtr)
+        var res = parseFloat(this.state.tres["endOdometer"] - startOdometer)
         console.log(res)
         this.setState({ totalKm: res })
 
@@ -225,7 +210,7 @@ class Endtest extends Component {
                                     <div class="form-group col-md-6">
                                         <label for="exampleFormControlTextarea1">Driver Signature:</label>
                                         <SignatureCanvas penColor='green'
-                                             ref={(ref) => { this.sign2 = ref }} canvasProps={{ width: 300, height: 100, className: 'sigCanvas' }} />
+                                            ref={(ref) => { this.sign2 = ref }} canvasProps={{ width: 300, height: 100, className: 'sigCanvas' }} />
                                     </div>
 
                                     <div class="form-group col-md-6 sign-btn">
