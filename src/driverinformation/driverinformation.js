@@ -103,7 +103,7 @@ class DriverInformation extends Component {
             trilerPlate: this.state.trilerPlate,
             truckType: this.state.truckType
         }
-        console.log(addDriverDetails)
+
         if (window.confirm("are you sure you want Start Test!")) {
 
 
