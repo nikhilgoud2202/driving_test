@@ -113,7 +113,7 @@ class DriverInformation extends Component {
             )
                 .then(
                     resp => {
-                        console.log(resp.data)
+
                         this.props.updateData({
                             startTime: this.state.startTime,
                             startOdometer: this.state.startOdometer,
