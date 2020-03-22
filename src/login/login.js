@@ -38,13 +38,11 @@ class Login extends Component {
       username: this.state.username,
       password: this.state.password
     }
-    console.log(loginData)
+
 
     axios.post("https://drivingtest.herokuapp.com/login", loginData)
       .then(
         resp => {
-
-          console.log(resp)
           if (resp.data) {
             localStorage.setItem("userID", resp.data._id);
             this.props.history.push("/driverlogin");

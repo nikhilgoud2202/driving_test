@@ -33,14 +33,14 @@ class Backingparking extends Component {
         this.props.updateData({ [e.target.name]: e.target.value })
         // var tres = parseFloat(this.props.formData.P1_Q1_Sc + this.props.formData.P1_Q2_Sc + this.props.formData.P1_Q3_Sc + this.props.formData.P1_Q4_Sc + this.props.formData.P1_Q5_Sc + this.props.formData.P1_Q6_Sc + this.props.formData.P1_Q7_Sc + this.props.formData.P1_Q8_Sc);
         this.state.tres[e.target.name] = parseFloat(e.target.value);
-        console.log(this.state.tres)
+
         var res = 0;
         Object.keys(this.state.tres).forEach(element => {
             res = res + this.state.tres[element];
         });
         // var arr = Object.keys(this.state.tres);
         // arr.forEach(element => {
-        //     console.log(element)
+        //  
         // });
         // var res = this.state.tres["P1_Q1_Sc"] + this.state.tres["P1_Q2_Sc"] +
         // this.state.tres = this.state.tres + parseInt(e.target.value);
@@ -50,7 +50,7 @@ class Backingparking extends Component {
     render() {
         const { handleSubmit, pristine, previousPage, submitting, formData } = this.props;
 
-        console.log(formData)
+
         return (
             <form>
                 <Col sm="12">

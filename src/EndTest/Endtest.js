@@ -20,7 +20,7 @@ class Endtest extends Component {
     constructor(props) {
         super(props)
         var total = parseFloat(this.props.formData.P1_total_Sc + this.props.formData.P2_total_Sc + this.props.formData.P3_total_Sc + this.props.formData.P4_total_Sc + this.props.formData.P5_total_Sc + this.props.formData.P6_total_Sc + this.props.formData.P7_total_Sc)
-        console.log(total)
+
         this.state = {
             sign2: {},
             sign1: {},
@@ -117,15 +117,13 @@ class Endtest extends Component {
                             answers: this.state.answers,
                             testInfo: resp.data
                         }
-                        //    console.log(pdf.testInfo.driverSignature)
-                        console.log(pdf)
+
                         axios.post("https://drivingtest.herokuapp.com/sendpdf",
                             pdf
                         )
                             .then(
                                 pdff => {
-                                    console.log(pdff.data)
-                                    // this.props.clearData();
+
 
                                     this.props.history.push("/driverlogin");
                                 })
@@ -143,14 +141,14 @@ class Endtest extends Component {
         this.setState({ [e.target.name]: e.target.value })
         this.state.tres[e.target.name] = parseFloat(e.target.value);
         var res = parseFloat(this.state.tres["endOdometer"] - startOdometer)
-        console.log(res)
+
         this.setState({ totalKm: res })
 
     }
 
 
     render() {
-        console.log(this.state.sign2trimmedDataURL)
+
         return (
             <div>
                 <Header show={true} />
