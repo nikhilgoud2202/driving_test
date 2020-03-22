@@ -30,6 +30,7 @@ class Endtest extends Component {
             endOdometer: '',
             endTime: '',
             totalKm: '',
+            endLocation: '',
             driverComment: '',
             examinerComment: '',
             qualified: '',
@@ -86,6 +87,7 @@ class Endtest extends Component {
                 startTime: startTime,
                 startOdometer: startOdometer,
                 startLocation: startLocation,
+                endLocation: this.state.endLocation,
                 endTime: this.state.endTime,
                 endOdometer: this.state.endOdometer,
                 KMsDriven: this.state.totalKm,
@@ -104,24 +106,29 @@ class Endtest extends Component {
             )
                 .then(
                     resp => {
+                        var dtae = new Date();
+                        var dates = dtae.getFullYear() + '-' + dtae.getMonth() + '-' + dtae.getDate();
 
-                        console.log(resp.data)
+
+
                         var pdf = {
+                            datee: dates,
                             DriverInfo: this.state.driverInfo,
                             answers: this.state.answers,
                             testInfo: resp.data
                         }
-                        this.props.history.push("/driverlogin");
-                        // axios.post("https://drivingtest.herokuapp.com/sendpdf",
-                        //     pdf
-                        // )
-                        //     .then(
-                        //         pdff => {
-                        //             console.log(pdff.data)
-                        //             this.props.clearData();
+                        //    console.log(pdf.testInfo.driverSignature)
+                        console.log(pdf)
+                        axios.post("https://drivingtest.herokuapp.com/sendpdf",
+                            pdf
+                        )
+                            .then(
+                                pdff => {
+                                    console.log(pdff.data)
+                                    // this.props.clearData();
 
-                        //             this.props.history.push("/driverlogin");
-                        //         })
+                                    this.props.history.push("/driverlogin");
+                                })
                     })
         }
     }

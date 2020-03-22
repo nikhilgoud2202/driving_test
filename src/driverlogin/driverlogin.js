@@ -19,7 +19,8 @@ class DriverLogin extends Component {
         this.state = {
             firstName: '',
             lastname: '',
-            licenseNumber: ''
+            licenseNumber: '',
+
         }
     }
     componentDidMount() {
@@ -34,6 +35,7 @@ class DriverLogin extends Component {
         else if (localStorage.startTime) {
             this.props.history.push("/start-test");
         }
+
     }
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value })

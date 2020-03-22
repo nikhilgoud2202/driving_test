@@ -32,7 +32,9 @@ class DriverInformation extends Component {
             startTime: '',
             startOdometer: '',
             startLoction: '',
-            enable: true
+            expiryDates: ''
+
+
 
         }
     }
@@ -44,9 +46,9 @@ class DriverInformation extends Component {
         else if (!licenseNumber) {
             this.props.history.push("/driverlogin");
         }
-        else if (startTime) {
-            this.props.history.push("/start-test");
-        }
+        // else if (startTime) {
+        //     this.props.history.push("/start-test");
+        // }
         axios.post("https://drivingtest.herokuapp.com/getDriverDetails", {
             licenseNumber
         })
@@ -84,29 +86,34 @@ class DriverInformation extends Component {
 
     DriverTest = (e) => {
         e.preventDefault();
+        let dat = this.state.expiryDate.substring(0, 10)
+
+        let addDriverDetails = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            licenseNumber: this.state.licenseNumber,
+            expiryDate: dat,
+            classType: this.state.classType,
+            companyName: this.state.companyName,
+            address: this.state.address,
+            tractor: this.state.tractor,
+            tractorPlate: this.state.truckType,
+            triler: this.state.triler,
+            trilerPlate: this.state.trilerPlate,
+            truckType: this.state.truckType
+        }
+        console.log(addDriverDetails)
         if (window.confirm("are you sure you want Start Test!")) {
 
-            let addDriverDetails = {
-                firstName: this.state.firstName,
-                lastName: this.state.lastName,
-                email: this.state.email,
-                licenseNumber: this.state.licenseNumber,
-                expiryDate: this.state.expiryDate,
-                classType: this.state.classType,
-                companyName: this.state.companyName,
-                address: this.state.address,
-                tractor: this.state.tractor,
-                tractorPlate: this.state.truckType,
-                triler: this.state.triler,
-                trilerPlate: this.state.trilerPlate,
-                truckType: this.state.truckType
-            }
+
 
             axios.post("https://drivingtest.herokuapp.com/addDriverDetails",
                 addDriverDetails
             )
                 .then(
                     resp => {
+                        console.log(resp.data)
                         this.props.updateData({
                             startTime: this.state.startTime,
                             startOdometer: this.state.startOdometer,
