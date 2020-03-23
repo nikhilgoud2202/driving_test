@@ -34,6 +34,7 @@ class Endtest extends Component {
             driverComment: '',
             examinerComment: '',
             qualified: '',
+            routeTravelled: '',
             sign1trimmedDataURL: null,
             sign2trimmedDataURL: null,
             tres: {},
@@ -97,7 +98,8 @@ class Endtest extends Component {
                 examinerSignature: this.sign1.getTrimmedCanvas().toDataURL('image/png'),
                 driverSignature: this.sign2.getTrimmedCanvas().toDataURL('image/png'),
                 examinerComments: this.state.examinerComment,
-                driverComments: this.state.driverComment
+                driverComments: this.state.driverComment,
+                routeTravelled: this.state.routeTravelled
 
 
             }
@@ -123,6 +125,7 @@ class Endtest extends Component {
                         )
                             .then(
                                 pdff => {
+                                    console.log(pdff.data)
 
 
                                     this.props.history.push("/driverlogin");
@@ -192,7 +195,10 @@ class Endtest extends Component {
                                             <option value="Company to Decide">Company to Decide</option>
                                         </select>
                                     </div>
-
+                                    <div class="form-group col-md-12">
+                                        <label for="exampleFormControlTextarea1">Route Travelled:</label>
+                                        <textarea class="form-control" onChange={this.handleChange} name="routeTravelled" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    </div>
 
 
                                     <div class="form-group col-md-12">

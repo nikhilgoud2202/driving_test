@@ -613,7 +613,7 @@ class Passingturning extends Component {
                                 <div class="form-group col-md-12">
                                     <div class="form-group col-md-12">
                                         <label for="exampleFormControlTextarea1">Comment Section:</label>
-                                        <textarea class="form-control" value={formData.P6_C_Com} name="P6_F_Com" onChange={this.handleChangeText} id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <textarea class="form-control" value={formData.P6_Com} name="P6_F_Com" onChange={this.handleChangeText} id="exampleFormControlTextarea1" rows="3"></textarea>
                                     </div>
                                 </div>
                             </FormGroup>
