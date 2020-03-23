@@ -15,8 +15,10 @@ import { updateTestData, clearData } from "../redux/actions/index"
 class DriverInformation extends Component {
     constructor(props) {
         super(props)
+
         this.state = {
             firstName: '',
+            today: new Date(),
             lastname: '',
             licenseNumber: '',
             triler: '',
@@ -82,7 +84,18 @@ class DriverInformation extends Component {
     }
 
     handleChange = (e) => this.setState({ [e.target.name]: e.target.value })
+
     handleChanges = (e) => this.setState({ [e.target.name]: e.target.value })
+    handleChangess = (e) => {
+
+        var hours = parseInt(e.target.value.split(":")[0]);
+        var AmOrPm = hours >= 12 ? 'P.M' : 'A.M';
+        hours = (hours % 12) || 12;
+        var minutes = parseInt(e.target.value.split(":")[1]);
+        var finalTime = hours + ":" + minutes + " " + AmOrPm;
+        console.log(finalTime)
+        this.setState({ [e.target.name]: finalTime })
+    }
 
     DriverTest = (e) => {
         e.preventDefault();
@@ -113,11 +126,12 @@ class DriverInformation extends Component {
             )
                 .then(
                     resp => {
-
+                        console.log(this.state.startLoction)
                         this.props.updateData({
+                            startLoction: this.state.startLoction,
                             startTime: this.state.startTime,
                             startOdometer: this.state.startOdometer,
-                            startLoction: this.state.startLoction,
+
                         })
                         this.props.history.push("/start-test");
                     })
@@ -168,7 +182,7 @@ class DriverInformation extends Component {
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputCity">Expiry Date</label>
-                                        <input type="date" value={this.state.expiryDate} onChange={this.handleChange} class="form-control" name="expiryDate" placeholder="Expiry Date" required />
+                                        <input type="date" min={this.state.today} value={this.state.expiryDate} onChange={this.handleChange} class="form-control" name="expiryDate" placeholder="Expiry Date" required />
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputState">Class Type</label>
@@ -225,7 +239,7 @@ class DriverInformation extends Component {
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputZip"  > Test Starting Time</label>
-                                        <input type="time" class="form-control" name="startTime" onChange={this.handleChanges} placeholder="Test Start Time" required />
+                                        <input type="time" class="form-control" name="startTime" onChange={this.handleChangess} placeholder="Test Start Time" required />
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputZip">Start Odometer</label>

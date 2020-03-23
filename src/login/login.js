@@ -8,6 +8,7 @@ import {
   FormGroup
 } from 'reactstrap';
 import { render } from 'react-dom';
+import './login.css'
 import Header from '../Header';
 
 class Login extends Component {
@@ -60,10 +61,10 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
+      <div >
         <Header show={false} />
         <div className="Container">
-          <Card className="card-border">
+          <Card className="card-border login-forms" >
             <CardBody>
               <header className="panel-heading">
 
@@ -71,7 +72,7 @@ class Login extends Component {
               </header>
               <form onSubmit={this.LoginHandler}>
                 <div className="form-row">
-                  <div className="col-md-6 mb-3">
+                  <div className="col-md-12 mb-12">
                     <label for="validationTooltip03">User Name</label>
                     <input type="text" className="form-control"
                       onChange={this.onChange}
@@ -80,17 +81,17 @@ class Login extends Component {
                   </div>
                 </div>
                 <div className="form-row">
-                  <div className="col-md-6 mb-3">
+                  <div className="col-md-12 mb-12">
                     <label for="validationTooltip03">Password</label>
                     <input type="password" className="form-control"
                       onChange={this.onChange} id="validationTooltip03" name="password" autocomplete="off" placeholder="Password" required />
 
                   </div>
                 </div>
-
+                <br />
                 <div className="form-group row">
-                  <div className="col-sm-10">
-                    <button type="submit" className="btn btn-primary">Sign in</button>
+                  <div className="col-sm-12">
+                    <button type="submit" className="btn btn-primary pull-right">Sign in</button>
                   </div>
                 </div>
 

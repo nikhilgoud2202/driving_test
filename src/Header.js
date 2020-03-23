@@ -34,8 +34,8 @@ class Header extends Component {
 
 
                         <div className="form-group col-md-5">
-                            <img src={logo} onClick="/" style={{ height: "50px" }} /></div> <div className="form-group col-md-5">
-                            <h2 style={{ color: "midnightblue" }}> Road Test Evaluation</h2></div><div className="form-group col-md-2 ">
+                            <img src={logo} onClick="/" style={{ height: "50px", marginLeft: "10px", marginTop: "12px" }} /></div> <div className="form-group col-md-5">
+                            <h2 style={{ color: "midnightblue", marginTop: "12px" }}> Road Test Evaluation</h2></div><div className="form-group col-md-2 ">
                             {this.props.show ? <a onClick={this.LogoutHandler} style={{ marginTop: "15px", marginRight: "10px" }} class="btn btn-info btn-md pull-right">
                                 Log out
         </a> : null}

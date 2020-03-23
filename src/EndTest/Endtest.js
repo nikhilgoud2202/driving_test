@@ -81,13 +81,18 @@ class Endtest extends Component {
 
     EndHandler = (e) => {
         e.preventDefault();
-        const { licenseNumber, startTime, startOdometer, startLocation } = this.props.localData;
+        const { licenseNumber, startTime, startOdometer, startLoction } = this.props.localData;
+        console.log(startLoction)
+
+
+
+
         if (window.confirm("are you sure you want end the Test!")) {
             let end_data = {
                 licenseNumber: licenseNumber,
                 startTime: startTime,
                 startOdometer: startOdometer,
-                startLocation: startLocation,
+                startLocation: startLoction,
                 endLocation: this.state.endLocation,
                 endTime: this.state.endTime,
                 endOdometer: this.state.endOdometer,
@@ -103,6 +108,7 @@ class Endtest extends Component {
 
 
             }
+
             axios.post("https://drivingtest.herokuapp.com/addTestInformation",
                 end_data
             )
@@ -119,6 +125,7 @@ class Endtest extends Component {
                             answers: this.state.answers,
                             testInfo: resp.data
                         }
+                        console.log(pdf)
 
                         axios.post("https://drivingtest.herokuapp.com/sendpdf",
                             pdf
@@ -138,13 +145,21 @@ class Endtest extends Component {
         this.setState({ [e.target.name]: e.target.value })
 
     }
-    handleChanges = (e) => {
+    handleChangess = (e) => {
 
+        var hours = parseInt(e.target.value.split(":")[0]);
+        var AmOrPm = hours >= 12 ? 'P.M' : 'A.M';
+        hours = (hours % 12) || 12;
+        var minutes = parseInt(e.target.value.split(":")[1]);
+        var finalTime = hours + ":" + minutes + " " + AmOrPm;
+        this.setState({ [e.target.name]: finalTime })
+    }
+
+    handleChanges = (e) => {
         const { startOdometer } = this.props.localData;
         this.setState({ [e.target.name]: e.target.value })
         this.state.tres[e.target.name] = parseFloat(e.target.value);
         var res = parseFloat(this.state.tres["endOdometer"] - startOdometer)
-
         this.setState({ totalKm: res })
 
     }
@@ -167,7 +182,7 @@ class Endtest extends Component {
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputZip"> Test End Time</label>
-                                        <input type="time" class="form-control" onChange={this.handleChange} name="endTime" placeholder="Test  End Time" required />
+                                        <input type="time" class="form-control" onChange={this.handleChangess} name="endTime" placeholder="Test  End Time" required />
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputZip">End Odometer</label>
@@ -208,7 +223,7 @@ class Endtest extends Component {
                                     <div class="form-group col-md-6">
                                         <label for="exampleFormControlTextarea1">Examiner Signature:</label>
                                         <SignatureCanvas penColor='green'
-                                            ref={(ref) => { this.sign1 = ref }} canvasProps={{ width: 300, height: 100, className: 'sigCanvas' }} />
+                                            ref={(ref) => { this.sign1 = ref }} canvasProps={{ width: 300, height: 100, className: 'sigCanvas pull-left' }} />
                                     </div>
                                     <div class="form-group col-md-6 sign-btn">
                                         <a class="btn btn-primary  pull-center" onClick={this.Signone}>Clear Signature</a>
@@ -221,7 +236,7 @@ class Endtest extends Component {
                                     <div class="form-group col-md-6">
                                         <label for="exampleFormControlTextarea1">Driver Signature:</label>
                                         <SignatureCanvas penColor='green'
-                                            ref={(ref) => { this.sign2 = ref }} canvasProps={{ width: 300, height: 100, className: 'sigCanvas' }} />
+                                            ref={(ref) => { this.sign2 = ref }} canvasProps={{ width: 300, height: 100, className: 'sigCanvas pull-left' }} />
                                     </div>
 
                                     <div class="form-group col-md-6 sign-btn">
