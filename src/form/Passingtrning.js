@@ -747,12 +747,6 @@ class Passingturning extends Component {
                                     </div>
                                 </div>
                             </FormGroup>
-
-
-
-
-
-
                         </CardBody>
                         <div style={{ paddingBottom: 30 }}>
                             <Button color="primary" className="btn-pill pull-left" onClick={previousPage} style={{ marginLeft: '20px' }}>
