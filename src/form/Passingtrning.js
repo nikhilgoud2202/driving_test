@@ -603,6 +603,136 @@ class Passingturning extends Component {
                                         <input type="number" class="form-control" value={formData.P6_F_Q5_Sc} name="P6_F_Q5_Sc" onChange={this.handleChange} placeholder="Add Score" />
                                     </div>
                                 </div>
+
+                                <div class="form-group col-md-12">
+                                    <div class="form-group col-md-12">
+                                        <label for="exampleFormControlTextarea1">Comment Section:</label>
+                                        <textarea class="form-control" value={formData.P6_F_Com} name="P6_F_Com" onChange={this.handleChangeText} id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </FormGroup>
+                            <header class="panel-heading">
+
+                                <h5 class="panel-title">G.COURTESY AND SAFETY:</h5>
+                            </header>
+                            <FormGroup row>
+                                <div className="form-group col-md-6">
+
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-12 control-label" for="w6-provide_age_proof">Use defensive driving techniques:</label>
+
+                                        <select class="form-control" value={formData.P6_G_Q1_Se} name="P6_G_Q1_Se" onChange={this.handleChangeText} >
+                                            <option value="">Select Choice</option>
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
+                                            <option value="N.A">N.A</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <input type="number" class="form-control" value={formData.P6_G_Q1_Sc} name="P6_G_Q1_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                    </div>
+                                </div>
+                                <div className="form-group col-md-6">
+
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-12 control-label" for="w6-provide_age_proof">Yield right-of-way for safety:</label>
+                                        <select class="form-control" value={formData.P6_G_Q2_Se} name="P6_G_Q2_Se" onChange={this.handleChangeText} >
+                                            <option value="">Select Choice</option>
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
+                                            <option value="N.A">N.A</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <input type="number" class="form-control" value={formData.P6_G_Q2_Sc} name="P6_G_Q2_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                    </div>
+                                </div>
+                                <div className="form-group col-md-6">
+
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-12 control-label" for="w6-worked_before">Does not crown through others or force his way thru traffic:</label>
+
+                                        <select class="form-control" value={formData.P6_G_Q3_Se} name="P6_G_Q3_Se" onChange={this.handleChangeText} >
+                                            <option value="">Select Choice</option>
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
+                                            <option value="N.A">N.A</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <input type="number" class="form-control" value={formData.P6_G_Q3_Sc} name="P6_G_Q3_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                    </div>
+                                </div>
+                                <div className="form-group col-md-6">
+
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-12 control-label" for="w6-provide_age_proof">Allows faster traffic to pass:</label>
+                                        <select class="form-control" value={formData.P6_G_Q4_Se} name="P6_G_Q4_Se" onChange={this.handleChangeText} >
+                                            <option value="">Select Choice</option>
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
+                                            <option value="N.A">N.A</option>
+                                        </select>
+                                    </div>
+
+
+                                    <div class="form-group col-md-12">
+                                        <input type="number" class="form-control" value={formData.P6_G_Q4_Sc} name="P6_G_Q4_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                    </div>
+                                </div>
+                                <div className="form-group col-md-6">
+
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-12 control-label" for="w6-worked_before">Keeps to the right and does not wonder in his own lane:</label>
+
+                                        <select class="form-control" value={formData.P6_G_Q5_Se} name="P6_G_Q5_Se" onChange={this.handleChangeText} >
+                                            <option value="">Select Choice</option>
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
+                                            <option value="N.A">N.A</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <input type="number" class="form-control" value={formData.P6_G_Q5_Sc} name="P6_G_Q5_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                    </div>
+                                </div>
+                                <div className="form-group col-md-6">
+
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-12 control-label" for="w6-provide_age_proof">Use horn only when necessary:</label>
+                                        <select class="form-control" value={formData.P6_G_Q6_Se} name="P6_G_Q6_Se" onChange={this.handleChangeText} >
+                                            <option value="">Select Choice</option>
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
+                                            <option value="N.A">N.A</option>
+                                        </select>
+                                    </div>
+
+
+                                    <div class="form-group col-md-12">
+                                        <input type="number" class="form-control" value={formData.P6_G_Q6_Sc} name="P6_G_Q6_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                    </div>
+                                </div>
+                                <div className="form-group col-md-6">
+
+                                    <div class="form-group col-md-12">
+                                        <label class="col-sm-12 control-label" for="w6-worked_before">General courteous and uses proper conduct:</label>
+
+                                        <select class="form-control" value={formData.P6_G_Q7_Se} name="P6_G_Q7_Se" onChange={this.handleChangeText} >
+                                            <option value="">Select Choice</option>
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
+                                            <option value="N.A">N.A</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <input type="number" class="form-control" value={formData.P6_G_Q7_Sc} name="P6_G_Q7_Sc" onChange={this.handleChange} placeholder="Add Score" />
+                                    </div>
+                                </div>
                                 <div className="form-group col-md-6">
                                     <label class="col-sm-12 control-label" for="w6-worked_before">Passing and Turning Total Score:</label>
                                     <div class="form-group col-md-12">
@@ -613,10 +743,11 @@ class Passingturning extends Component {
                                 <div class="form-group col-md-12">
                                     <div class="form-group col-md-12">
                                         <label for="exampleFormControlTextarea1">Comment Section:</label>
-                                        <textarea class="form-control" value={formData.P6_Com} name="P6_F_Com" onChange={this.handleChangeText} id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <textarea class="form-control" value={formData.P6_G_Com} name="P6_F_Com" onChange={this.handleChangeText} id="exampleFormControlTextarea1" rows="3"></textarea>
                                     </div>
                                 </div>
                             </FormGroup>
+
 
 
 
