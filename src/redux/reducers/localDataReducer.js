@@ -12,11 +12,6 @@ const initialState = {
 
 const localDataReducer = (state = initialState, action) => {
     switch (action.type) {
-        case types.CLEAR_DATA: {
-            return {
-                ...initialState()
-            }
-        }
         case types.UPDATE_TEST_DATA:
             return {
                 ...state,

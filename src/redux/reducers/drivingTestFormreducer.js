@@ -20,7 +20,7 @@ const drivingTestFormreducer = (state = initialState, action) => {
       }
     case types.CLEAR_DATA: {
       return {
-        ...initialState()
+        ...initialState
       }
     }
     case types.STORING_DATA: {
