@@ -27,7 +27,7 @@ class Form extends Component {
       steps: [
         { title: 'PRE-TRIP INSPECTION' },
         { title: 'COUPLING AND UNCOUPLING' },
-        { title: 'PLACING VEHICLE IN MOTION AND USE OFCONTROLS' },
+        { title: 'PLACING VEHICLE IN MOTION AND USE OF CONTROLS' },
         { title: 'BACKING AND PARKING' },
         { title: 'SLOWING AND STOPPING' },
         { title: 'OPERATING IN TRAFFIC: PASSING AND TURNING' },
@@ -37,7 +37,7 @@ class Form extends Component {
 
   }
   componentDidMount() {
-    const { licenseNumber, startTime} = this.props.localData;
+    const { licenseNumber, startTime } = this.props.localData;
     if (!localStorage.userID) {
       this.props.history.push("/");
     }
@@ -147,7 +147,7 @@ Form.propTypes = {
 
 const mapStateToProps = state => {
   return {
-      localData: state.localData
+    localData: state.localData
   }
 }
 
