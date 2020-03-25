@@ -52,7 +52,6 @@ class DriverLogin extends Component {
             .then(
                 resp => {
                     if (resp.data) {
-                        console.log("TSSTST")
                         this.props.updateData({
                             licenseNumber: this.state.licenseNumber,
                             firstName: this.state.firstName,
@@ -65,7 +64,6 @@ class DriverLogin extends Component {
                             firstName: this.state.firstName,
                             lastName: this.state.lastName
                         })
-                        this.props.resetForm();
                         this.props.history.push("/driverinfo");
                     }
                 })
@@ -132,7 +130,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         updateData: (data) => dispatch(updateTestData(data)),
-        resetForm: () => dispatch(clearData())
     }
 }
 

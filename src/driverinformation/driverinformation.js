@@ -118,7 +118,7 @@ class DriverInformation extends Component {
         }
 
         if (window.confirm("are you sure you want Start Test!")) {
-
+            this.props.resetForm();
 
 
             axios.post("https://drivingtest.herokuapp.com/addDriverDetails",
@@ -271,6 +271,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         updateData: (data) => dispatch(updateTestData(data)),
+        resetForm: () => dispatch(clearData())
     }
 }
 
